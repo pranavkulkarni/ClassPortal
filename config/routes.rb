@@ -10,6 +10,10 @@ Rails.application.routes.draw do
   post 'logins/validate' => 'logins#validate'
   get 'logins/index' => 'logins#index'
   get 'logins/logout' => 'logins#logout'
+  get 'admins/land/home' => 'admins#home'
+  get 'instructors/land/home' => 'instructors#home'
+  get 'students/land/home' => 'students#home'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

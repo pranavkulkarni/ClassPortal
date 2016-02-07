@@ -25,13 +25,19 @@ class LoginsController < ApplicationController
       redirect_to '/logins/index'
     else
       session[:current_user_id] = returnVal.id
-      @view = @usertype+'s'
-      redirect_to '/'+@view+'/' + returnVal[:id].to_s
+      session[:user_type] = @usertype
+      session[:name] = returnVal.name
+      @view = @usertype + 's'
+      #below link is preprended with "land" word because Rails by default will take home as "id" in the model controller
+      #check GET syntax in controller.
+      redirect_to '/' + @view + '/land/home'
     end
   end
 
   def logout
     session[:current_user_id] = nil
+    session[:user_type] = nil
+    session[:name] = nil
     redirect_to '/logins/index'
   end
 

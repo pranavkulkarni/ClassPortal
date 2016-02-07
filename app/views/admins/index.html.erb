@@ -23,7 +23,7 @@
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
         <% end %>
         <% if admin.name != 'Pranav Kulkarni' and admin.id != session[:current_user_id]%>
-        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
         <% end %>
 
       </tr>
@@ -32,5 +32,7 @@
 </table>
 
 <br>
+
+<br/>
 <%= render 'form' %>
 <%= link_to 'New Admin', new_admin_path %>
