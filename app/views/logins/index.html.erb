@@ -1,0 +1,23 @@
+<html>
+
+<body>
+
+
+<h1>Welcome to Class Portal</h1>
+
+<form class="form" method='post' action = '/logins/validate'>
+  <input required type="email" name = "email" placeholder="Email"><br/> <br/>
+  <input required type="password" name = "password" placeholder="Password"><br/> <br/>
+  <select required name= "userType">
+    <option value = "">Select User Type</option>
+    <option value = "student">Student</option>
+    <option value = "instructor">Instructor</option>
+    <option value = "admin">Admin</option>
+  </select><br/> <br/>
+  <button name = "validate" type="submit" id="login-button">Login</button><br/>
+  <%= flash[:notice] if flash[:notice]%>
+</form>
+
+</body>
+
+</html>
