@@ -1,4 +1,5 @@
 class InstructorsController < ApplicationController
+  skip_before_filter  :verify_authenticity_token
   before_action :set_instructor, only: [:show, :edit, :update, :destroy]
 
   # GET /instructors
@@ -79,5 +80,24 @@ class InstructorsController < ApplicationController
 
     def manage_student
       render :instructor => "manage_student"
+    end
+
+    def manage_course_material
+      render :instructor => "manage_course_material"
+    end
+
+    def add_enrollment
+      render :instructor => "add_enrollment"
+    end
+
+    def enroll_student
+      @student_id_list = params[:student_ids]
+      @student_id_list.each do |x|
+        e = Enrollment.find_by(student_id: x)
+        e.status = 'ENROLLED'
+        e.save
+      end
+
+
     end
 end

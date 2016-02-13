@@ -25,7 +25,8 @@
         <tr>
           <td><%= c.courseNumber.to_s + ' - ' + c.title.to_s%></td>
           <td><%= link_to 'Manage Students', '/instructors/land/manage_student' %></td>
-
+          <td><%= link_to 'Manage Course Material', '/instructors/land/manage_course_material' %></td>
+          <td><%= link_to 'Add Enrollments', '/instructors/land/add_enrollment' %></td>
         </tr>
     <% end %>
     </tbody>

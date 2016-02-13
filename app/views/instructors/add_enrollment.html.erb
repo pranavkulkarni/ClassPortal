@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Pending Enrollments</h1>
+<form action='enroll_student' method='post'>
+<table>
+  <thead>
+  <tr>
+    <th>Select All</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% Enrollment.all.select{|stu| stu.status == 'PENDING'}.each do |stu| %>
+      <tr>
+        <% st = Student.find_by_id(stu.student_id) %>
+        <li>
+          <%= check_box_tag 'student_ids[]', st.id -%>
+          <%= h st.name -%>
+          <%= h st.email -%>
+        </li>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+  <button name = "enroll" type="submit" id="enroll-button">Enroll Students</button><br/>
+
+</form>
+
+<br>
+
+<br/>
+<%= render 'form' %>
+<%= link_to 'New Admin', new_admin_path %>
