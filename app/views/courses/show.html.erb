@@ -17,7 +17,7 @@
 
 <p>
   <strong>Instructor:</strong>
-  <%= @course.instructor_id %>
+  <%= Instructor.find(@course.instructor_id).name %>
 </p>
 
 <p>

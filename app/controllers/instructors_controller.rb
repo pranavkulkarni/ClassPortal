@@ -76,4 +76,8 @@ class InstructorsController < ApplicationController
     def instructor_params
       params.require(:instructor).permit(:name, :email, :password)
     end
+
+    def manage_student
+      render :instructor => "manage_student"
+    end
 end

@@ -5,5 +5,5 @@ class Course < ActiveRecord::Base
   #validates :instructor, :presence => true
   validates :startDate, :presence => true
   validates :endDate, :presence => true
-
+  validates :status, :presence => true
 end

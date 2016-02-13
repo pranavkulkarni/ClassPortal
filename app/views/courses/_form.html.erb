@@ -23,10 +23,10 @@
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-  <div class="field">
-  <%= f.label :instructor_id %><br>
-    <%= f.text_field :instructor_id %>
-  </div>
+    <div class="field">
+      <%= f.label :instructor_id %><br>
+      <%= f.select :instructor_id, options_for_select(Instructor.all.map{|s|[s.name, s.id]}), {:prompt =>"Select Instructor"} %>
+    </div>
   <div class="field">
     <%= f.label :startDate %><br>
     <%= f.date_select :startDate %>
@@ -37,7 +37,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select :status, options_for_select(["Active", "Inactive"]), {:prompt =>"Select Status"} %>
   </div>
   <div class="actions">
     <%= f.submit %>

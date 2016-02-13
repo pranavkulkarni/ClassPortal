@@ -4,7 +4,9 @@ class CoursesController < ApplicationController
   # GET /courses
   # GET /courses.json
   def index
+    @instructors = Instructor.all
     @courses = Course.all
+
   end
 
   # GET /courses/1
@@ -69,6 +71,6 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      params.require(:course).permit(:courseNumber, :title, :description, :instructor, :startDate, :endDate, :status)
+      params.require(:course).permit(:courseNumber, :title, :description, :instructor_id, :startDate, :endDate, :status)
     end
 end
