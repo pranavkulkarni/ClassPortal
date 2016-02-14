@@ -13,10 +13,12 @@ Rails.application.routes.draw do
   get 'admins/land/home' => 'admins#home'
   get 'instructors/land/home' => 'instructors#home'
   get 'students/land/home' => 'students#home'
-  get 'instructors/land/manage_student' => 'instructors#manage_student'
-  get 'instructors/land/manage_course_material' => 'instructors#manage_course_material'
-  get 'instructors/land/add_enrollment' => 'instructors#add_enrollment'
-  post 'instructors/land/enroll_student'  => 'instructors#enroll_student'
+  post 'instructors/land/dispatcher' => 'instructors#dispatcher'
+  get 'instructors/land/manage_student/:id' => 'instructors#manage_student'
+  get 'instructors/land/manage_course_material/:id' => 'instructors#manage_course_material'
+  get 'instructors/land/add_enrollment/:id' => 'instructors#add_enrollment'
+  post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
+  post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

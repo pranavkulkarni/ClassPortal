@@ -78,25 +78,46 @@ class InstructorsController < ApplicationController
       params.require(:instructor).permit(:name, :email, :password)
     end
 
-    def manage_student
-      render :instructor => "manage_student"
+    public
+    def manage_stu(courseId)
+      redirect_to "/instructors/land/manage_student/"+ courseId.to_s
     end
 
-    def manage_course_material
-      render :instructor => "manage_course_material"
+    def manage_course_mat(courseId)
+      redirect_to "/instructors/land/manage_course_material/"+ courseId.to_s
     end
 
-    def add_enrollment
-      render :instructor => "add_enrollment"
+    def add_enroll (courseId)
+      redirect_to "/instructors/land/add_enrollment/"+ courseId.to_s
     end
+
 
     def enroll_student
       @student_id_list = params[:student_ids]
       @student_id_list.each do |x|
         e = Enrollment.find_by(student_id: x)
-        e.status = 'ENROLLED'
+        puts e.student_id.to_s + "  " + e.status.to_s
+        e.status = "ENROLLED"
         e.save
       end
+      flash[:notice] = 'Students enrolled successfully!'
+      redirect_to '/instructors/land/home'
+
+    end
+
+    def dispatcher
+      if params.has_key?(:manage_student)
+        manage_stu params[:radio_checked]
+      elsif params.has_key?(:add_enrollment)
+        add_enroll params[:radio_checked]
+      elsif params.has_key?(:manage_course_material)
+        manage_course_mat params[:radio_checked]
+      end
+    end
+
+
+    def manage_student_dispatcher
+      puts params
 
 
     end

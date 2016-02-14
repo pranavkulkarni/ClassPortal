@@ -1,10 +1,60 @@
-<html>
-<head>
-  <h1>Managing Students</h1>
-  <p></p>
-  <h2>Enrolled Students</h2>
+<p id="notice"><%= notice %></p>
 
-</head>
-<body>
-</body>
-</html>
+<h1>Manage Enrolled Students</h1>
+<form action='manage_student_dispatcher' method='post'>
+  <table>
+    <thead>
+    <tr>
+      <th>Select All</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="10"></th>
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <% Enrollment.all.select{|stu| stu.status == 'ENROLLED' and stu.course_id.to_s == params[:id].to_s}.each do |stu| %>
+        <tr>
+          <% st = Student.find_by_id(stu.student_id) %>
+
+          <td><%= check_box_tag 'student_ids[]', st.id -%></td>
+          <td><%= st.name -%></td>
+          <td><%= st.email -%></td>
+
+        </tr>
+    <% end %>
+    </tbody>
+
+
+  </table>
+<table>
+  <tbody>
+  <tr>
+    <td><select name= "grade">
+      <option value = "">Select Grade</option>
+      <option value = "A">A</option>
+      <option value = "B">B</option>
+      <option value = "C">C</option>
+      <option value = "D">D</option>
+    </select></td>
+    <td><button name = "add_grade" type="submit" id="add_grade-button">Add Grade</button></td>
+  </tr>
+
+  <br></br>
+  <tr>
+    <td></td>
+     <td> <button name = "remove_student" type="submit" id="remove_student-button">Remove Students</button>
+    </td>
+  </tr>
+
+  </tbody>
+</table>
+
+</form>
+
+
+<br>
+
+<br/>
+<%= render 'form' %>

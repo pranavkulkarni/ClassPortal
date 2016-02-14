@@ -5,38 +5,39 @@
 
 <br/>
 <br/>
-
+<%= flash[:notice] if flash[:notice]%>
 
 <div>
-  <h1>Your Courses:</h1>
 
+  <h1>Your Courses:</h1>
+  <form action='dispatcher' method='post'>
   <table>
     <thead>
     <tr>
       <th>Course</th>
-      <th>Actions</th>
-      <!-- <th>Password</th> -->
-      <th colspan="2"></th>
+      <th></th>
+      <th></th>
+      <th colspan="5"></th>
     </tr>
     </thead>
 
     <tbody>
     <% Course.all.select { |x| x.instructor_id == session[:current_user_id]}.each do |c| %>
         <tr>
+          <td><%= radio_button_tag 'radio_checked', c.id -%></td>
           <td><%= c.courseNumber.to_s + ' - ' + c.title.to_s%></td>
-          <td><%= link_to 'Manage Students', '/instructors/land/manage_student' %></td>
-          <td><%= link_to 'Manage Course Material', '/instructors/land/manage_course_material' %></td>
-          <td><%= link_to 'Add Enrollments', '/instructors/land/add_enrollment' %></td>
         </tr>
     <% end %>
+    <tr>
+      <td><button name = "manage_student" type="submit" id="manage_student-button">Manage Students</button></td>
+      <td><button name = "manage_course_material" type="submit" id="manage_course_material-button">Manage Course Material</button></td>
+      <td><button name = "add_enrollment" type="submit" id="add_enrollment-button">Add Enrollments</button></td>
+    </tr>
     </tbody>
   </table>
+  </form>
 
 </div>
-
-<form class="form" method='get' action = '/admins'>
-  <button name = "manage_admins" type="submit" id="manage_admin_button">Manage Admins</button><br/>
-</form>
 
 </body>
 </html>
