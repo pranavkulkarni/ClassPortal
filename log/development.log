@@ -17785,3 +17785,44 @@ ActionView::MissingTemplate (Missing template instructors/manage_student_dispatc
   Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
   Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
   Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (31.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-02-14 19:10:17 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by LoginsController#index as HTML
+  Rendered logins/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 515ms (Views: 496.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/logins/validate" for 127.0.0.1 at 2016-02-14 19:10:24 -0500
+Processing by LoginsController#validate as HTML
+  Parameters: {"email"=>"ed@ncsu.edu", "password"=>"[FILTERED]", "userType"=>"instructor", "validate"=>""}
+  [1m[35mInstructor Load (0.5ms)[0m  SELECT  "instructors".* FROM "instructors" WHERE "instructors"."email" = ? LIMIT 1  [["email", "ed@ncsu.edu"]]
+Redirected to http://localhost:3000/instructors/land/home
+Completed 302 Found in 16ms (ActiveRecord: 0.9ms)
+
+
+Started GET "/instructors/land/home" for 127.0.0.1 at 2016-02-14 19:10:24 -0500
+Processing by InstructorsController#home as HTML
+  [1m[36mCourse Load (0.5ms)[0m  [1mSELECT "courses".* FROM "courses"[0m
+  Rendered instructors/home.html.erb within layouts/application (14.8ms)
+Completed 200 OK in 44ms (Views: 42.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/instructors/land/dispatcher" for 127.0.0.1 at 2016-02-14 19:10:28 -0500
+Processing by InstructorsController#dispatcher as HTML
+  Parameters: {"radio_checked"=>"7", "manage_student"=>""}
+Redirected to http://localhost:3000/instructors/land/manage_student/7
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/instructors/land/manage_student/7" for 127.0.0.1 at 2016-02-14 19:10:28 -0500
+Processing by InstructorsController#manage_student as HTML
+  Parameters: {"id"=>"7"}
+  [1m[35mEnrollment Load (0.6ms)[0m  SELECT "enrollments".* FROM "enrollments"
+  [1m[36mStudent Load (0.4ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 1]]
+  [1m[35mStudent Load (0.1ms)[0m  SELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1  [["id", 2]]
+  [1m[36mStudent Load (0.1ms)[0m  [1mSELECT  "students".* FROM "students" WHERE "students"."id" = ? LIMIT 1[0m  [["id", 4]]
+  Rendered instructors/_form.html.erb (0.4ms)
+  Rendered instructors/manage_student.html.erb within layouts/application (98.8ms)
+Completed 200 OK in 121ms (Views: 117.7ms | ActiveRecord: 2.3ms)

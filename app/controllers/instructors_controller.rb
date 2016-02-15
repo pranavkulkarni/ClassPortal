@@ -118,7 +118,8 @@ class InstructorsController < ApplicationController
 
     def manage_student_dispatcher
       puts params
-
+      if params.has_key?(:add_grade)
+        add_grade params
 
     end
 end
