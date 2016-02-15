@@ -8,6 +8,7 @@
       <th>Select All</th>
       <th>Name</th>
       <th>Email</th>
+      <th>Grade</th>
       <th colspan="10"></th>
     </tr>
 
@@ -21,7 +22,7 @@
           <td><%= check_box_tag 'student_ids[]', st.id -%></td>
           <td><%= st.name -%></td>
           <td><%= st.email -%></td>
-
+          <td><%= stu.grade -%></td>
         </tr>
     <% end %>
     </tbody>
@@ -43,7 +44,7 @@
 
   <br></br>
   <tr>
-    <td></td>
+    <td><input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:id]%> /></td>
      <td> <button name = "remove_student" type="submit" id="remove_student-button">Remove Students</button>
     </td>
   </tr>

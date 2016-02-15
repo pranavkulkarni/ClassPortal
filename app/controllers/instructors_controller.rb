@@ -80,20 +80,39 @@ class InstructorsController < ApplicationController
 
     public
     def manage_stu(courseId)
+      if courseId == nil
+        flash[:notice] = 'Please select a course!'
+        redirect_to '/instructors/land/home'
+      else
       redirect_to "/instructors/land/manage_student/"+ courseId.to_s
+      end
     end
 
     def manage_course_mat(courseId)
+      if courseId == nil
+        flash[:notice] = 'Please select a course!'
+        redirect_to '/instructors/land/home'
+      else
       redirect_to "/instructors/land/manage_course_material/"+ courseId.to_s
-    end
+      end
+     end
 
     def add_enroll (courseId)
+      if courseId == nil
+        flash[:notice] = 'Please select a course!'
+        redirect_to '/instructors/land/home'
+      else
       redirect_to "/instructors/land/add_enrollment/"+ courseId.to_s
-    end
+      end
+     end
 
 
     def enroll_student
       @student_id_list = params[:student_ids]
+      if @student_id_list == nil
+          flash[:notice] = 'Please select student(s)!'
+          redirect_to '/instructors/land/add_enrollment/' + params[:tokenCourseId].to_s
+      else
       @student_id_list.each do |x|
         e = Enrollment.find_by(student_id: x)
         puts e.student_id.to_s + "  " + e.status.to_s
@@ -102,7 +121,7 @@ class InstructorsController < ApplicationController
       end
       flash[:notice] = 'Students enrolled successfully!'
       redirect_to '/instructors/land/home'
-
+      end
     end
 
     def dispatcher
@@ -115,11 +134,47 @@ class InstructorsController < ApplicationController
       end
     end
 
+    def add__stu_grade(courseId,grade,student_list)
+      if student_list == nil
+        flash[:notice] = 'Please select student(s)!'
+        redirect_to '/instructors/land/manage_student/' + courseId.to_s
+      elsif grade.to_s == ''
+        flash[:notice] = 'Kindly select a grade!'
+        redirect_to '/instructors/land/manage_student/'+courseId.to_s
+      else
+        student_list.each do |x|
+        e = Enrollment.find_by(student_id: x, course_id: courseId, status: 'ENROLLED')
+        #puts e.student_id.to_s + "  " + e.status.to_s
+        e.grade = grade
+        e.save
+      end
+      flash[:notice] = 'Student grades updated successfully!'
+      redirect_to '/instructors/land/manage_student/'+courseId.to_s
+      end
+    end
+
+    def remove_stu(courseId,student_list)
+      if student_list == nil
+        flash[:notice] = 'Please select student(s)!'
+        redirect_to '/instructors/land/manage_student/' + courseId.to_s
+      else
+        student_list.each do |x|
+        e = Enrollment.find_by(student_id: x, course_id: courseId, status: 'ENROLLED')
+        #puts e.student_id.to_s + "  " + e.status.to_s
+        e.destroy
+        end
+      flash[:notice] = 'Student(s) removed successfully!'
+      redirect_to '/instructors/land/manage_student/'+courseId.to_s
+      end
+    end
+
 
     def manage_student_dispatcher
       puts params
       if params.has_key?(:add_grade)
-        add_grade params
-
+        add__stu_grade params[:tokenCourseId], params[:grade], params[:student_ids]
+      elsif params.has_key?(:remove_student)
+        remove_stu params[:tokenCourseId], params[:student_ids]
+      end
     end
 end
