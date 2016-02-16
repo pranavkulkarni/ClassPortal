@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
 
   post 'logins/validate' => 'logins#validate'
+  post 'logins/signupValidate' => 'logins#signupValidate'
+  get 'logins/signup' => 'logins#signup'
   get 'logins/index' => 'logins#index'
   get 'logins/logout' => 'logins#logout'
   get 'admins/land/home' => 'admins#home'
@@ -19,6 +21,10 @@ Rails.application.routes.draw do
   get 'instructors/land/add_enrollment/:id' => 'instructors#add_enrollment'
   post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
   post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
+
+  post 'students/land/dispatcher' => 'students#dispatcher'
+  get '/students/land/enrollment_page' => 'students#enrollment_page'
+  post 'students/land/enroll_course' => 'students#enroll_course'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

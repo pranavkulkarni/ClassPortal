@@ -54,11 +54,18 @@ class EnrollmentsController < ApplicationController
   # DELETE /enrollments/1
   # DELETE /enrollments/1.json
   def destroy
+    puts "&&&&&&&&&& destroy method called"
+    puts @enrollment.id
+    puts @enrollment.course_id.to_s
     @enrollment.destroy
-    respond_to do |format|
-      format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to 'students/land/home'
+    return
+    #@enrollment.destroy
+    #respond_to do |format|
+    #  format.html { redirect_to enrollments_url, notice: 'Enrollment was successfully destroyed.' }
+    #  format.json { head :no_content }
+    #end
+
   end
 
   private

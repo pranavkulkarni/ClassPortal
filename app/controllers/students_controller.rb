@@ -1,5 +1,6 @@
 class StudentsController < ApplicationController
   before_action :set_student, only: [:show, :edit, :update, :destroy]
+  skip_before_filter  :verify_authenticity_token
 
   # GET /students
   # GET /students.json
@@ -58,6 +59,27 @@ class StudentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to students_url, notice: 'Student was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def take_to_enroll_student_page
+    redirect_to '/students/land/enrollment_page'
+  end
+
+  def enroll_course
+    @courseListToEnroll = params[:courses_to_be_enrolled]
+    puts "###############" + params.to_s
+    puts "@@@@@@@@@@@@@@@@" + session[:current_user_id].to_s
+    @courseListToEnroll.each do |courId|
+      @e = Enrollment.create(student_id: session[:current_user_id].to_s, course_id: courId, status: 'PENDING', grade: '')
+    end
+    flash[:notice] = 'Enrollment request(s) have been submitted'
+    redirect_to '/students/land/enrollment_page'
+  end
+
+  def dispatcher
+    if params.has_key?(:enroll_student)
+      take_to_enroll_student_page
     end
   end
 

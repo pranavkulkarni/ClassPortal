@@ -114,7 +114,7 @@ class InstructorsController < ApplicationController
           redirect_to '/instructors/land/add_enrollment/' + params[:tokenCourseId].to_s
       else
       @student_id_list.each do |x|
-        e = Enrollment.find_by(student_id: x)
+        e = Enrollment.find_by(student_id: x, course_id: params[:tokenCourseId])
         puts e.student_id.to_s + "  " + e.status.to_s
         e.status = "ENROLLED"
         e.save

@@ -34,6 +34,31 @@ class LoginsController < ApplicationController
     end
   end
 
+
+  def signupValidate
+    puts "________--------------------" + params.to_s
+    @email = params[:email]
+    @password = params[:password]
+    @confirm_password = params[:confirm_password]
+    if @password.to_s != @confirm_password.to_s
+      flash[:notice] = 'Passwords do not match!'
+      redirect_to '/logins/signup'
+      return
+    end
+    @model = Student
+    returnVal = @model.find_by email: @email
+    if returnVal != nil
+      flash[:notice] = 'The email you entered is already signed up. Please choose a different email id'
+      redirect_to '/logins/signup'
+      return
+    else
+      @stud = Student.create(name: params[:name], email: @email, password: @password)
+      flash[:notice] = 'Signed up successfully. Now please login.'
+      redirect_to '/logins/index'
+      return
+    end
+  end
+
   def logout
     session[:current_user_id] = nil
     session[:user_type] = nil

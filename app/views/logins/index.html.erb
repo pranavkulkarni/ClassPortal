@@ -6,6 +6,7 @@
 <h1>Welcome to Class Portal</h1>
 
 <form class="form" method='post' action = '/logins/validate'>
+  <div class="form-group">
   <input required type="email" name = "email" placeholder="Email"><br/> <br/>
   <input required type="password" name = "password" placeholder="Password"><br/> <br/>
   <select required name= "userType">
@@ -16,7 +17,11 @@
   </select><br/> <br/>
   <button name = "validate" type="submit" id="login-button">Login</button><br/>
   <%= flash[:notice] if flash[:notice]%>
+  </div>
 </form>
+<br/>
+
+<%= link_to 'SignUp', '/logins/signup'%>
 
 </body>
 

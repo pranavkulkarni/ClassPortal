@@ -1,0 +1,19 @@
+<html>
+
+<body>
+
+
+<h1>Sign Up</h1>
+
+<form class="form" method='post' action = '/logins/signupValidate'>
+  <input required type="text" name = "name" placeholder="Name"><br/> <br/>
+  <input required type="email" name = "email" placeholder="Email"><br/> <br/>
+  <input required type="password" name = "password" placeholder="Password"><br/> <br/>
+  <input required type="password" name = "confirm_password" placeholder="Confirm Password"><br/> <br/>
+  <button name = "validate" type="submit" id="signup-button">Sign up</button><br/>
+  <%= flash[:notice] if flash[:notice]%>
+</form>
+
+</body>
+
+</html>
