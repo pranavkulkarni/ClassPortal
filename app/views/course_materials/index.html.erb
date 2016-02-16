@@ -25,7 +25,6 @@
         <td><%= Instructor.find_by_id(course_material.instructor_id).name %></td>
         <td><%= link_to 'Show', course_material %></td>
         <td><%= link_to 'Edit', edit_course_material_path(course_material) %></td>
-        <td><%= link_to 'Destroy', course_material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <%end%>
       <input id="tokenInsId" name="tokenInsId" type="hidden" value=<%= params[:id2].to_s %> />

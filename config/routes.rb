@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
   post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
   post 'course_materials/new' => 'course_materials/new'
+  post 'course_materials/:id' => 'course_materials#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
