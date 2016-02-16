@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @course_material.title %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @course_material.message %>
+</p>
+
+<%= link_to 'Edit', edit_course_material_path(@course_material) %> |
+<%= link_to 'Back', '/instructors/land/manage_course_material/' + @course_material.course_id.to_s + '/'+ @course_material.instructor_id.to_s %>

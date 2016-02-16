@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :course_materials
   resources :grades
   resources :enrollments
   resources :courses
@@ -17,10 +18,12 @@ Rails.application.routes.draw do
   get 'students/land/home' => 'students#home'
   post 'instructors/land/dispatcher' => 'instructors#dispatcher'
   get 'instructors/land/manage_student/:id' => 'instructors#manage_student'
-  get 'instructors/land/manage_course_material/:id' => 'instructors#manage_course_material'
+  get 'instructors/land/manage_course_material/:id1/:id2' => 'course_materials#index'
   get 'instructors/land/add_enrollment/:id' => 'instructors#add_enrollment'
   post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
   post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
+  post 'course_materials/new' => 'course_materials/new'
+  post 'course_materials/:id' => 'course_materials#destroy'
 
   post 'students/land/dispatcher' => 'students#dispatcher'
   get '/students/land/enrollment_page' => 'students#enrollment_page'

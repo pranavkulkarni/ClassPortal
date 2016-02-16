@@ -27,6 +27,8 @@
           <td><%= radio_button_tag 'radio_checked', c.id -%></td>
           <td><%= c.courseNumber.to_s + ' - ' + c.title.to_s%></td>
         </tr>
+        <input id="tokenInsId" name="tokenInsId" type="hidden" value=<%= c.instructor_id %> />
+        <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%= c.id %> />
     <% end %>
     <tr>
       <td><button name = "manage_student" type="submit" id="manage_student-button">Manage Students</button></td>
