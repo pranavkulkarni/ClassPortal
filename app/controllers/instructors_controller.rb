@@ -88,12 +88,12 @@ class InstructorsController < ApplicationController
       end
     end
 
-    def manage_course_mat(courseId)
+    def manage_course_mat(courseId,tokenInsId)
       if courseId == nil
         flash[:notice] = 'Please select a course!'
         redirect_to '/instructors/land/home'
       else
-      redirect_to "/instructors/land/manage_course_material/"+ courseId.to_s
+      redirect_to "/instructors/land/manage_course_material/"+ courseId.to_s + "/" + tokenInsId.to_s
       end
      end
 
@@ -130,7 +130,7 @@ class InstructorsController < ApplicationController
       elsif params.has_key?(:add_enrollment)
         add_enroll params[:radio_checked]
       elsif params.has_key?(:manage_course_material)
-        manage_course_mat params[:radio_checked]
+        manage_course_mat params[:radio_checked], params[:tokenInsId]
       end
     end
 

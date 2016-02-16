@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Course Materials</h1>
+<form action= <%=new_course_material_path%> method='post'>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Course</th>
+      <th>Instructor</th>
+      <!--<th> <colspan="3"/></th> -->
+    </tr>
+  </thead>
+
+  <tbody>
+  <%= puts params %>
+    <% @course_materials.each do |course_material| %>
+      <% if course_material.course_id.to_s == params[:id1].to_s and
+          course_material.instructor_id.to_s == params[:id2].to_s %>
+      <tr>
+        <td><%= course_material.title %></td>
+        <td><%= course_material.message %></td>
+        <td><%= Course.find_by_id(course_material.course_id).title %></td>
+        <td><%= Instructor.find_by_id(course_material.instructor_id).name %></td>
+        <td><%= link_to 'Show', course_material %></td>
+        <td><%= link_to 'Edit', edit_course_material_path(course_material) %></td>
+        <td><%= link_to 'Destroy', course_material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <%end%>
+      <input id="tokenInsId" name="tokenInsId" type="hidden" value=<%= params[:id2].to_s %> />
+      <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%= params[:id1].to_s %> />
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <td> <button name = "create_new_material" type="submit" id="create_new_material-button">Create New material</button> </td>
+  </form>
+
+

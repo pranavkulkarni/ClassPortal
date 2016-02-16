@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :course_materials
   resources :grades
   resources :enrollments
   resources :courses
@@ -15,10 +16,11 @@ Rails.application.routes.draw do
   get 'students/land/home' => 'students#home'
   post 'instructors/land/dispatcher' => 'instructors#dispatcher'
   get 'instructors/land/manage_student/:id' => 'instructors#manage_student'
-  get 'instructors/land/manage_course_material/:id' => 'instructors#manage_course_material'
+  get 'instructors/land/manage_course_material/:id1/:id2' => 'course_materials#index'
   get 'instructors/land/add_enrollment/:id' => 'instructors#add_enrollment'
   post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
   post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
+  post 'course_materials/new' => 'course_materials/new'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

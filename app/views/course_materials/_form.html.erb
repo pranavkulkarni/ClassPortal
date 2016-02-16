@@ -1,0 +1,27 @@
+<%= form_for(@course_material) do |f| %>
+  <% if @course_material.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@course_material.errors.count, "error") %> prohibited this course_material from being saved:</h2>
+
+      <ul>
+      <% @course_material.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :message %><br>
+    <%= f.text_field :message %>
+  </div>
+    <input id="course_id" name="course_id" type="hidden" value=<%= params[:tokenCourseId].to_s %> />
+    <input id="instructor_id" name="instructor_id" type="hidden" value=<%= params[:tokenInsId].to_s %> />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
