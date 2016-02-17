@@ -68,8 +68,6 @@ class StudentsController < ApplicationController
 
   def enroll_course
     @courseListToEnroll = params[:courses_to_be_enrolled]
-    puts "###############" + params.to_s
-    puts "@@@@@@@@@@@@@@@@" + session[:current_user_id].to_s
     @courseListToEnroll.each do |courId|
       @e = Enrollment.create(student_id: session[:current_user_id].to_s, course_id: courId, status: 'PENDING', grade: '')
     end
@@ -77,9 +75,35 @@ class StudentsController < ApplicationController
     redirect_to '/students/land/enrollment_page'
   end
 
+
+  def drop_course
+    puts "###############" + params.to_s
+    puts "@@@@@@@@@@@@@@@@" + session[:current_user_id].to_s
+    e = Enrollment.find_by(student_id: session[:current_user_id], course_id: params[:cId], status: 'ENROLLED')
+    e.status = 'DROPPED'
+    e.save
+    flash[:notice] = 'Course has been dropped.'
+    redirect_to '/students/land/home'
+  end
+
+  def take_to_search_course_page
+    redirect_to '/students/land/search_course'
+  end
+
+  #def search_result
+  #  redirect_to '/students/land/search_result'
+  #end
+
+
   def dispatcher
+    puts params
+    puts "oo**********************%%%%%%%%%%%%%%"
     if params.has_key?(:enroll_student)
       take_to_enroll_student_page
+    end
+    if params.has_key?(:search)
+      puts "oo*************####################"
+      take_to_search_course_page
     end
   end
 

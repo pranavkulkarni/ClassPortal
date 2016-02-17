@@ -8,6 +8,31 @@
 </head>
 <body>
 
+<form class="form" method='get' action = '/logins/logout'>
+  <button name = "logout" type="submit" id="logout-button">Log Out</button><br/>
+</form>
+
+<% if session[:current_user_id] != nil %>
+<form class="form" method='get' action = <%= '/' + session[:user_type] + 's/land/home' %> >
+  <button name = "home" type="submit" id="home-button">Home</button><br/>
+</form>
+<% end %>
+
+
+<% if session[:user_type] == 'admin' %>
+    <%= link_to 'Edit profile', edit_admin_path(Admin.find(session[:current_user_id])) %>
+<% end %>
+
+<% if session[:user_type] == 'instructor' %>
+    <%= link_to 'Edit profile', edit_instructor_path(Instructor.find(session[:current_user_id])) %>
+<% end %>
+
+
+<% if session[:user_type] == 'student' %>
+    <%= link_to 'Edit profile', edit_student_path(Student.find(session[:current_user_id])) %>
+<% end %>
+
+
 <%= yield %>
 
 </body>

@@ -15,26 +15,35 @@
       <thead>
       <tr>
         <th>Course</th>
-        <th></th>
-        <th></th>
+        <th>Status</th>
+        <th>Grade</th>
       </tr>
       </thead>
 
       <tbody>
-      <% Enrollment.all.select { |x| x.student_id == session[:current_user_id] and x.status == 'ENROLLED'}.each do |c| %>
+      <% Enrollment.all.select { |x| x.student_id == session[:current_user_id]}.each do |c| %>
           <tr>
-            <% @courseDetails = Course.find_by id: c.course_id%>
+            <% @courseDetails = Course.find_by id: c.course_id %>
             <% @courseDetails = @courseDetails.courseNumber + ' '+ @courseDetails.title %>
             <td><%= @courseDetails %></td>
+            <td><%= c.status %></td>
+            <td><%= c.grade %></td>
+
             <td><%= link_to 'Show Details', course_path(c.course_id) %></td>
 
-            <td><%= link_to 'Drop Course', {controller: "enrollments", action: "destroy", id: c.id.to_s}, { :confirm => 'Are you sure to drop course?', :method => :delete, :remote => true} %></td>
+            <td><%= link_to 'Drop Course', 'drop_course/' + c.course_id.to_s, data: {confirm: 'Are you sure to drop the course?'} %></td>
+            <% if c.status == 'ENROLLED' %>
+                <td><%= link_to 'View Course Material', "/instructors/land/manage_course_material/"+ c.course_id.to_s + "/" + session[:current_user_id].to_s%></td>
+            <%end%>
+
+
           </tr>
       <% end %>
 
       </tbody>
     </table>
     <button name = "enroll_student" type="submit" id="enroll_student-button">Enroll Into A Course</button>
+    <button name = "search" type="submit" id="search-button">Search Courses</button>
 
   </form>
 

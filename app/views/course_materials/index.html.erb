@@ -16,8 +16,7 @@
   <tbody>
   <%= puts params %>
     <% @course_materials.each do |course_material| %>
-      <% if course_material.course_id.to_s == params[:id1].to_s and
-          course_material.instructor_id.to_s == params[:id2].to_s %>
+      <% if course_material.course_id.to_s == params[:id1].to_s %>
       <tr>
         <td><%= course_material.title %></td>
         <td><%= course_material.message %></td>

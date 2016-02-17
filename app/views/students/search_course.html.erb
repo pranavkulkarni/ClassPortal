@@ -1,0 +1,34 @@
+<html>
+<body>
+<br/>
+<%= flash[:notice] if flash[:notice]%>
+
+<div>
+
+  <h1>Search by keyword:</h1>
+  <form action='search_result' method='post'>
+    <table>
+      <tbody>
+      <tr>
+        <td></td>
+        <td><select required name= "criteria">
+          <option value = "">Select Criteria</option>
+          <option value = "courseNumber">Course Number</option>
+          <option value = "title">Course Title</option>
+          <option value = "instructor_id">Course Instructor</option>
+          <option value = "description">Course Description</option>
+          <option value = "status">Course Status</option>
+        </select></td>
+        <td> <div class="field">
+          <input required type="text" name = "keyword" placeholder="Enter Keyword">
+        </div> </td>
+        <td><button name = "search_criteria" type="submit" id="search_criteria-button">Search</button></td>
+      </tr>
+      </tbody>
+      </table>
+  </form>
+
+</div>
+
+</body>
+</html>

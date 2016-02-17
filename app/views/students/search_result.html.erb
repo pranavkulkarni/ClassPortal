@@ -1,0 +1,44 @@
+<html>
+<body>
+<%= flash[:notice] if flash[:notice]%>
+<table>
+  <thead>
+  <th> Course Number </th>
+  <th> Course Title </th>
+  <th> Course Instructor </th>
+  <th> Course Description </th>
+  <th> Course Status </th>
+  </thead>
+
+  <tbody>
+  <%= puts params %>
+  <%= puts "fghgvhjgyfyghjkhytfrdfghjk" %>
+  <% @colname = params[:criteria].to_s
+     if @colname == 'instructor_id'
+       @id = Instructor.find_by_name(params[:keyword].to_s).id.to_s
+     else
+       @id = params[:keyword].to_s
+     end
+
+  %>
+  <% cl = Course.all.select { |searchrow| searchrow.send(params[:criteria].to_sym) == @id.to_s} %>
+  <% if cl.size !=0 %>
+     <% cl.each do |searchrow| %>
+      <% if searchrow != nil %>
+          <tr>
+            <td><%= searchrow.courseNumber.to_s %></td>
+            <td><%= searchrow.title.to_s %></td>
+            <td><%= Instructor.find_by_id(searchrow.instructor_id.to_s).name.to_s %></td>
+            <td><%= searchrow.description.to_s %></td>
+            <td><%= searchrow.status.to_s %></td>
+          </tr>
+      <% end %>
+    <% end %>
+  <% else %>
+      <tr>No records found!</tr>
+  <% end %>
+  </tbody>
+
+</table>
+</body>
+</html>

@@ -3,6 +3,7 @@ class LoginsController < ApplicationController
   skip_before_filter  :verify_authenticity_token
 
   def index
+    session.clear
     render :logins => "index"
   end
 
@@ -60,9 +61,10 @@ class LoginsController < ApplicationController
   end
 
   def logout
-    session[:current_user_id] = nil
-    session[:user_type] = nil
-    session[:name] = nil
+    session.clear
+    #reset_session
+    puts "%%%%%%%%%%%%%%%%%%%%%%%"
+    puts session
     redirect_to '/logins/index'
   end
 
