@@ -1,0 +1,31 @@
+<html>
+<body>
+New message
+<br/>
+<% if session[:user_type] == 'student' %>
+<form action='create' method='post'>
+  <% @course = Course.find(params[:tokenCourseId]) %>
+  <% @instructors = Instructor.all.select { |x| x.id == @course.instructor_id } %>
+  <%= select_tag 'Instructor', options_for_select(@instructors.map { |u| [u.name, u.id] }) %>
+  <div class="field">
+    <input required type="text" name = "message" placeholder="Enter message">
+    <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:tokenCourseId]%> />
+    <button name = "submit_message" type="submit" id="submit_message-button">Submit message</button>
+  </div>
+</form>
+<% end %>
+
+<% if session[:user_type] == 'instructor' %>
+<form action='create' method='post'>
+  <div class="field">
+    <input required type="text" name = "message" placeholder="Enter message">
+    <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:tokenCourseId]%> />
+    <input id="tokenStudId" name="tokenStudId" type="hidden" value=<%=params[:tokenStudId]%> />
+    <button name = "submit_message" type="submit" id="submit_message-button">Submit message</button>
+  </div>
+</form>
+<%end%>
+
+
+</body>
+</html>

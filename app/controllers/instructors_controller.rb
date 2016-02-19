@@ -104,7 +104,16 @@ class InstructorsController < ApplicationController
       else
       redirect_to "/instructors/land/add_enrollment/"+ courseId.to_s
       end
-     end
+    end
+
+    def send_view_messages(courseId)
+      if courseId == nil
+        flash[:notice] = 'Please select a course!'
+        redirect_to '/instructors/land/home'
+      else
+        redirect_to "/instructors/land/send_view_messages/"+ courseId.to_s
+      end
+    end
 
 
     def enroll_student
@@ -124,6 +133,9 @@ class InstructorsController < ApplicationController
       end
     end
 
+
+
+
     def dispatcher
       if params.has_key?(:manage_student)
         manage_stu params[:radio_checked]
@@ -131,7 +143,10 @@ class InstructorsController < ApplicationController
         add_enroll params[:radio_checked]
       elsif params.has_key?(:manage_course_material)
         manage_course_mat params[:radio_checked], params[:tokenInsId]
+      elsif params.has_key?(:send_and_view_messages)
+        send_view_messages params[:radio_checked]
       end
+
     end
 
     def add__stu_grade(courseId,grade,student_list)

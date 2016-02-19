@@ -6,7 +6,7 @@ class CoursesController < ApplicationController
   def index
     @instructors = Instructor.all
     @courses = Course.all
-
+    puts "GET CALLED............."
   end
 
   # GET /courses/1

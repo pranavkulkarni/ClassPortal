@@ -1,0 +1,41 @@
+<html>
+<body>
+
+<br/>
+<br/>
+<%= flash[:notice] if flash[:notice]%>
+
+<div>
+
+  <h1>Your Messages:</h1>
+  <form action='new_message' method='post'>
+    <table>
+      <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Student</th>
+        <th>Message</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% Message.all.select { |x| x.instructor_id == session[:current_user_id] and x.course_id.to_s == params[:cId].to_s }.each do |m| %>
+          <tr>
+            <td><%= m.created_at %></td>
+            <td><%= Student.find(m.student_id).name %></td>
+            <td><%= m.message %></td>
+            <td><%= link_to 'Reply', "/instructors/land/send_view_messages/new_message/"+ m.course_id.to_s + "/" + m.student_id.to_s%></td>
+          </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+    <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:cId]%> />
+
+  </form>
+
+</div>
+
+</body>
+</html>
+

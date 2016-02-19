@@ -35,6 +35,7 @@
             <% if c.status == 'ENROLLED' %>
                 <td><%= link_to 'View Course Material', "/instructors/land/manage_course_material/"+ c.course_id.to_s + "/" + session[:current_user_id].to_s%></td>
             <%end%>
+            <td><%= link_to 'Send and View Messages', 'send_and_view_messages/' + c.course_id.to_s %></td>
 
 
           </tr>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :course_materials
   resources :grades
   resources :enrollments
@@ -19,7 +20,10 @@ Rails.application.routes.draw do
   post 'instructors/land/dispatcher' => 'instructors#dispatcher'
   get 'instructors/land/manage_student/:id' => 'instructors#manage_student'
   get 'instructors/land/manage_course_material/:id1/:id2' => 'course_materials#index'
+  get '/instructors/land/send_view_messages/new_message/:tokenCourseId/:tokenStudId' => 'messages#new_message'
+  post '/instructors/land/send_view_messages/new_message/:cId/create' => 'messages#create_message'
   get 'instructors/land/add_enrollment/:id' => 'instructors#add_enrollment'
+  get '/instructors/land/send_view_messages/:cId' => 'instructors#send_and_view_messages'
   post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
   post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
   post 'course_materials/new' => 'course_materials/new'
@@ -31,7 +35,9 @@ Rails.application.routes.draw do
   post 'students/land/enroll_course' => 'students#enroll_course'
   get 'students/land/search_course' => 'students#search_course'
   post 'students/land/search_result' => 'students#search_result'
-
+  get 'students/land/send_and_view_messages/:cId' => 'students#send_and_view_messages'
+  post 'students/land/send_and_view_messages/new_message' => 'messages#new_message'
+  post 'students/land/send_and_view_messages/create' => 'messages#create_message'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

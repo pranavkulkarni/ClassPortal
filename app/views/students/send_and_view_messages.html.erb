@@ -1,0 +1,41 @@
+<html>
+<body>
+
+<br/>
+<br/>
+<%= flash[:notice] if flash[:notice]%>
+
+<div>
+
+  <h1>Your Messages:</h1>
+  <form action='new_message' method='post'>
+    <table>
+      <thead>
+      <tr>
+        <th>Timestamp</th>
+        <th>Instructor</th>
+        <th>Message</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% Message.all.select { |x| x.student_id == session[:current_user_id] and x.course_id.to_s == params[:cId].to_s }.each do |m| %>
+          <tr>
+            <td><%= m.created_at %></td>
+            <td><%= Instructor.find(m.instructor_id).name %></td>
+            <td><%= m.message %></td>
+          </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+    <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:cId]%> />
+    <button name = "new_message" type="submit" id="new_message-button">Create a new message</button>
+
+  </form>
+
+</div>
+
+</body>
+</html>
+
