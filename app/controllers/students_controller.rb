@@ -42,10 +42,25 @@ class StudentsController < ApplicationController
   # PATCH/PUT /students/1.json
   def update
     respond_to do |format|
-      if @student.update(student_params)
-        format.html { redirect_to @student, notice: 'Student was successfully updated.' }
-        format.json { render :show, status: :ok, location: @student }
+      @st = Student.find(params[:id])
+      new_params= {}
+      new_params[:name] = student_params[:name]
+      new_params[:email] = student_params[:email]
+      if student_params[:password] == @st.password
+        if student_params[:new_password] != ""
+          new_params[:password] = student_params[:new_password]
+        else
+          new_params[:password] = student_params[:password]
+        end
+        if @student.update(new_params)
+          format.html { redirect_to @student, notice: 'Student was successfully updated.' }
+          format.json { render :show, status: :ok, location: @student }
+        else
+          format.html { render :edit }
+          format.json { render json: @student.errors, status: :unprocessable_entity }
+        end
       else
+        flash[:notice] = "Password is not correct!"
         format.html { render :edit }
         format.json { render json: @student.errors, status: :unprocessable_entity }
       end
@@ -113,6 +128,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :email, :password)
+      params.require(:student).permit(:name, :email, :password, :new_password)
     end
 end

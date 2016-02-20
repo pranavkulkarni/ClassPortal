@@ -31,9 +31,8 @@ class LoginsController < ApplicationController
     returnVal = @model.find_by email: @email
     puts "returnVal"
     puts returnVal
-    if returnVal == nil or returnVal[:password] != @password
+    if returnVal == nil or returnVal.password != @password
       flash[:notice] = 'login failed!'
-      puts flash[:notice]
       redirect_to '/logins/index'
     else
       session[:current_user_id] = returnVal.id

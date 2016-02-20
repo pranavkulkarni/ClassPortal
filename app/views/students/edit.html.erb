@@ -12,6 +12,8 @@
           </ul>
         </div>
     <% end %>
+    <%= flash[:notice] if flash[:notice]%>
+    <br> </br>
 
     <div class="field">
       <%= f.label :name %><br>
@@ -20,6 +22,14 @@
     <div class="field">
       <%= f.label :email %><br>
       <%= f.text_field :email, :readonly => true%>
+    </div>
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password %>
+    </div>
+    <div class="field">
+      <%= f.label :new_password %><br>
+      <%= f.password_field :new_password, :placeholder => 'Enter if you wish to change' %>
     </div>
     <div class="actions">
       <%= f.submit %>
