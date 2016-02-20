@@ -12,10 +12,15 @@
 
   <tbody>
   <%= puts params %>
-  <%= puts "fghgvhjgyfyghjkhytfrdfghjk" %>
   <% @colname = params[:criteria].to_s
      if @colname == 'instructor_id'
-       @id = Instructor.find_by_name(params[:keyword].to_s).id.to_s
+       @ins = Instructor.find_by(name: params[:keyword].to_s)
+        puts params[:keyword].to_s
+       if @ins == nil
+         @id = 0
+       else
+         @id = @ins.id.to_s
+       end
      else
        @id = params[:keyword].to_s
      end

@@ -17,8 +17,14 @@
         <td><%= student.name %></td>
         <td><%= student.email %></td><td> </td>
         <td><%= link_to 'Show', student %></td>
+        <% if student.id == session[:current_user_id] and session[:user_type] == 'student' %>
         <td><%= link_to 'Edit', edit_student_path(student) %></td>
-        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
+        <% if session[:user_type] == 'admin' %>
+            <td><%= link_to 'Add Grade', '/admins/land/add_grade/' + student.id.to_s %></td>
+            <td><%= link_to 'View Courses', '/students/land/view_courses/'+ student.id.to_s %></td>
+        <%end%>
+        <td><%= link_to 'Destroy',  '/students/land/destroy/'+ student.id.to_s %></td>
       </tr>
     <% end %>
   </tbody>

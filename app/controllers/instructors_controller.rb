@@ -83,8 +83,11 @@ class InstructorsController < ApplicationController
       if courseId == nil
         flash[:notice] = 'Please select a course!'
         redirect_to '/instructors/land/home'
+      elsif Course.find(courseId).status == 'Inactive'
+        flash[:notice] = 'Course is inactive!'
+        redirect_to '/instructors/land/home'
       else
-      redirect_to "/instructors/land/manage_student/"+ courseId.to_s
+        redirect_to "/instructors/land/manage_student/"+ courseId.to_s
       end
     end
 
@@ -92,8 +95,11 @@ class InstructorsController < ApplicationController
       if courseId == nil
         flash[:notice] = 'Please select a course!'
         redirect_to '/instructors/land/home'
+      elsif Course.find(courseId).status == 'Inactive'
+        flash[:notice] = 'Course is inactive!'
+        redirect_to '/instructors/land/home'
       else
-      redirect_to "/instructors/land/manage_course_material/"+ courseId.to_s + "/" + tokenInsId.to_s
+        redirect_to "/instructors/land/manage_course_material/"+ courseId.to_s + "/" + tokenInsId.to_s
       end
      end
 
@@ -101,14 +107,20 @@ class InstructorsController < ApplicationController
       if courseId == nil
         flash[:notice] = 'Please select a course!'
         redirect_to '/instructors/land/home'
+      elsif Course.find(courseId).status == 'Inactive'
+        flash[:notice] = 'Course is inactive!'
+        redirect_to '/instructors/land/home'
       else
-      redirect_to "/instructors/land/add_enrollment/"+ courseId.to_s
+        redirect_to "/instructors/land/add_enrollment/"+ courseId.to_s
       end
     end
 
     def send_view_messages(courseId)
       if courseId == nil
         flash[:notice] = 'Please select a course!'
+        redirect_to '/instructors/land/home'
+      elsif Course.find(courseId).status == 'Inactive'
+        flash[:notice] = 'Course is inactive!'
         redirect_to '/instructors/land/home'
       else
         redirect_to "/instructors/land/send_view_messages/"+ courseId.to_s

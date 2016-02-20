@@ -4,6 +4,14 @@ class LoginsController < ApplicationController
 
   def index
     session.clear
+    Course.all.select {|c| c.endDate < Date.today}.each do |x|
+      x.status = 'Inactive'
+      x.save
+      Enrollment.all.select {|y| y.course_id == x.id}.each do |y|
+        y.status = 'DROPPED'
+        y.save
+      end
+    end
     render :logins => "index"
   end
 
@@ -21,8 +29,11 @@ class LoginsController < ApplicationController
       @model = Admin
     end
     returnVal = @model.find_by email: @email
+    puts "returnVal"
+    puts returnVal
     if returnVal == nil or returnVal[:password] != @password
       flash[:notice] = 'login failed!'
+      puts flash[:notice]
       redirect_to '/logins/index'
     else
       session[:current_user_id] = returnVal.id

@@ -25,7 +25,8 @@
   </div>
     <div class="field">
       <%= f.label :instructor_id %><br>
-      <%= f.select :instructor_id, options_for_select(Instructor.all.map{|s|[s.name, s.id]}), {:prompt =>"Select Instructor"} %>
+      <%= f.select :instructor_id, options_for_select(Instructor.all.map{|s|[s.name, s.id]}),
+                   {:prompt =>"Select Instructor"}, :required => true%>
     </div>
   <div class="field">
     <%= f.label :startDate %><br>

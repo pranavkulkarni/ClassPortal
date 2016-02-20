@@ -29,9 +29,16 @@
         <td><%= course.status %></td>
             <% if (session[:user_type] == 'admin') %>
        <!-- <td><%= link_to 'Show', course %></td> -->
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
-                <% end  %>
+                <% if (course.status != 'Inactive') %>
+                    <td><%= link_to 'Edit', edit_course_path(course) %></td>
+                    <td><%= link_to 'Manage Material', 'instructors/land/manage_course_material/'+
+                        course.id.to_s + '/' +course.instructor_id.to_s %></td>
+                <% else %>
+                    <td></td>
+                    <td></td>
+                <%end%>
+                <td><%= link_to 'Destroy', '/courses/land/destroy/'+ course.id.to_s%></td>
+            <% end  %>
             <td> <% if (session[:user_type] == 'instructor') %>
                 <form class="form" method='get' action = '/admins'>
                   <button name = "manage" type="submit" id="manage">Manage</button><br/>

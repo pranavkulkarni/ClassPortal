@@ -19,10 +19,11 @@
         <td><%= instructor.email %></td>
         <!--<td><%= instructor.password %></td> -->
         <!--<td><%= link_to 'Show', instructor %></td>-->
-        <% if instructor.id == session[:current_user_id] %>
+        <% if instructor.id == session[:current_user_id] and session[:user_type] == 'instructor' %>
         <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
         <% end %>
-        <!--<td><%= link_to 'Destroy', instructor, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
+        <td><%= link_to 'View Courses', '/instructors/land/view_courses/'+ instructor.id.to_s %></td>
+        <td><%= link_to 'Destroy', '/instructors/land/destroy/'+ instructor.id.to_s %></td>
       </tr>
     <% end %>
   </tbody>

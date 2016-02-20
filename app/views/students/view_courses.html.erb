@@ -1,0 +1,32 @@
+<html>
+<h1><%= Student.find(params[:id]).name.to_s + "'s " %> Courses</h1>
+<table>
+  <thead>
+  <tr><th>Past Courses</th></tr>
+  </thead>
+  <tbody>
+  <% Enrollment.all.select{|c| c.status.to_s == 'DROPPED' and c.student_id.to_s == params[:id].to_s}.each do |cr| %>
+      <tr>
+        <td>
+          <%= Course.find(cr.course_id).title %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr><th>Present Courses</th></tr>
+  </thead>
+  <tbody>
+  <% Enrollment.all.select{|c| c.status.to_s == 'ENROLLED' and c.student_id.to_s == params[:id].to_s}.each do |cr| %>
+      <tr>
+        <td>
+          <%= Course.find(cr.course_id).title %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+</html>

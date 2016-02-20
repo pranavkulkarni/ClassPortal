@@ -23,7 +23,9 @@
         <td><%= Course.find_by_id(course_material.course_id).title %></td>
         <td><%= Instructor.find_by_id(course_material.instructor_id).name %></td>
         <td><%= link_to 'Show', course_material %></td>
+        <% if session[:user_type] != 'student' %>
         <td><%= link_to 'Edit', edit_course_material_path(course_material) %></td>
+        <%end%>
       </tr>
       <%end%>
       <input id="tokenInsId" name="tokenInsId" type="hidden" value=<%= params[:id2].to_s %> />

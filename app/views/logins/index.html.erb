@@ -1,10 +1,7 @@
 <html>
 
 <body>
-
-
-<h1>Welcome to Class Portal</h1>
-
+    <h1>Welcome to Class Portal</h1>
 <form class="form" method='post' action = '/logins/validate'>
   <div class="form-group">
   <input required type="email" name = "email" placeholder="Email"><br/> <br/>
@@ -15,8 +12,8 @@
     <option value = "instructor">Instructor</option>
     <option value = "admin">Admin</option>
   </select><br/> <br/>
+    <%= flash[:notice] if flash[:notice]%>
   <button name = "validate" type="submit" id="login-button">Login</button><br/>
-  <%= flash[:notice] if flash[:notice]%>
   </div>
 </form>
 <br/>

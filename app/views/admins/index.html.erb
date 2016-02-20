@@ -22,8 +22,8 @@
         <% if admin.id == session[:current_user_id] %>
         <td><%= link_to 'Edit', edit_admin_path(admin) %></td>
         <% end %>
-        <% if admin.name != 'Pranav Kulkarni' and admin.id != session[:current_user_id]%>
-        <td><%= link_to 'Destroy', admin, method: :delete, data: { confirm: 'Are you sure you want to delete?' } %></td>
+        <% if admin.email != 'pkulkar5@ncsu.edu' and admin.id != session[:current_user_id]%>
+        <td><%= link_to 'Destroy', '/admins/land/destroy/'+ admin.id.to_s%></td>
         <% end %>
 
       </tr>

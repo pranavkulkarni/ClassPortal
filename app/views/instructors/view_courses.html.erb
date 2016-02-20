@@ -1,0 +1,32 @@
+<html>
+<h1><%= Instructor.find(params[:id]).name.to_s + "'s " %> Courses</h1>
+  <table>
+    <thead>
+    <tr><th>Past Courses</th></tr>
+    </thead>
+    <tbody>
+    <% Course.all.select{|c| c.status == 'Inactive' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
+    <tr>
+      <td>
+        <%= cr.title %>
+      </td>
+    </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+  <table>
+    <thead>
+    <tr><th>Present Courses</th></tr>
+    </thead>
+    <tbody>
+    <% Course.all.select{|c| c.status == 'Active' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
+        <tr>
+          <td>
+            <%= cr.title %>
+          </td>
+        </tr>
+    <% end %>
+    </tbody>
+  </table>
+</html>

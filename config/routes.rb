@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   get 'logins/index' => 'logins#index'
   get 'logins/logout' => 'logins#logout'
   get 'admins/land/home' => 'admins#home'
+  get 'admins/land/add_grade/:id' => 'admins#add_grade'
+  post 'admins/land/add_grade/add_grade_admin' => 'admins#add_grade_admin'
   get 'instructors/land/home' => 'instructors#home'
   get 'students/land/home' => 'students#home'
   post 'instructors/land/dispatcher' => 'instructors#dispatcher'
@@ -28,6 +30,11 @@ Rails.application.routes.draw do
   post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
   post 'course_materials/new' => 'course_materials/new'
   post 'course_materials/:id' => 'course_materials#destroy'
+  get 'admins/land/destroy/:id'   => 'admins#destroy'
+  get 'courses/land/destroy/:id'   => 'courses#destroy'
+  get 'instructors/land/destroy/:id'   => 'instructors#destroy'
+  get 'students/land/destroy/:id'   => 'students#destroy'
+  get 'students/land/view_courses/:id' => 'students#view_courses'
 
   get 'students/land/drop_course/:cId' => 'students#drop_course'
   post 'students/land/dispatcher' => 'students#dispatcher'
@@ -38,6 +45,8 @@ Rails.application.routes.draw do
   get 'students/land/send_and_view_messages/:cId' => 'students#send_and_view_messages'
   post 'students/land/send_and_view_messages/new_message' => 'messages#new_message'
   post 'students/land/send_and_view_messages/create' => 'messages#create_message'
+
+  get 'instructors/land/view_courses/:id' => 'instructors#view_courses'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

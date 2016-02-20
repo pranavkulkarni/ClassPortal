@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  skip_before_filter  :verify_authenticity_token
 
 
   # GET /admins
@@ -55,6 +56,7 @@ class AdminsController < ApplicationController
   # DELETE /admins/1
   # DELETE /admins/1.json
   def destroy
+    puts " in delete"
     @admin.destroy
     respond_to do |format|
       format.html { redirect_to admins_url, notice: 'Admin was successfully destroyed.' }
@@ -65,6 +67,13 @@ class AdminsController < ApplicationController
   # GET /admins/land/home
   def home
     render :admins => "home"
+  end
+
+  def add_grade_admin
+    e = Enrollment.find_by(student_id: params[:stud_id].to_s, course_id: params[:Course].to_s)
+    e.grade = params[:grade].to_s
+    e.save
+    redirect_to '/students'
   end
 
   private

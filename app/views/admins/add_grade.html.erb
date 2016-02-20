@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Manage Enrolled Students</h1>
+<form action='add_grade_admin' method='post'>
+  <table>
+    <thead>
+    <tr>
+
+    </tr>
+
+    </thead>
+
+    <tbody>
+    <% e = Enrollment.all.select{|stu| stu.status == 'ENROLLED' and stu.student_id.to_s == params[:id].to_s} %>
+
+        <tr>
+
+          <td>
+            <%= select_tag 'Course', options_for_select(e.map { |u| [Course.find(u.course_id).title, u.course_id] }) %>
+          </td>
+          <td><select name= "grade">
+            <option value = "">Select Grade</option>
+            <option value = "A">A</option>
+            <option value = "B">B</option>
+            <option value = "C">C</option>
+            <option value = "D">D</option>
+          </select></td>
+        </tr>
+    <tr><td>  <button name = "add_grade" type="submit" id="add_grade-button">Add Grade</button> </td></tr>
+    </tbody>
+
+    <input id="stud_id" name="stud_id" type="hidden" value=<%= params[:id].to_s %> />
+
+
+  </table>
+</form>
+
+
+<br/>
+
+<br/>

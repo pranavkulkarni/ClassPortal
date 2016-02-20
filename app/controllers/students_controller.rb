@@ -77,9 +77,7 @@ class StudentsController < ApplicationController
 
 
   def drop_course
-    puts "###############" + params.to_s
-    puts "@@@@@@@@@@@@@@@@" + session[:current_user_id].to_s
-    e = Enrollment.find_by(student_id: session[:current_user_id], course_id: params[:cId], status: 'ENROLLED')
+    e = Enrollment.find_by(student_id: session[:current_user_id], course_id: params[:cId])
     e.status = 'DROPPED'
     e.save
     flash[:notice] = 'Course has been dropped.'
