@@ -1,8 +1,10 @@
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
 
-<h1>Listing Admins</h1>
+  <div class="panel-heading">Listing Admins</div>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -13,7 +15,8 @@
   </thead>
 
   <tbody>
-    <% @admins.each do |admin| %>
+
+  <% @admins.each do |admin| %>
       <tr>
         <td><%= admin.name %></td>
         <td><%= admin.email %></td>
@@ -31,8 +34,6 @@
   </tbody>
 </table>
 
-<br>
+</div>
+<a class="btn btn-lg btn-lg btn-block" href="<%= new_admin_path %>" >New Admin</a>
 
-<br/>
-
-<%= link_to 'New Admin', new_admin_path %>

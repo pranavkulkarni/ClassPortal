@@ -1,33 +1,37 @@
 <html>
 <body>
-
-<h1> Hi <%= session[:name] %> </h1>
-
-<br/>
+<%= render 'shared/navigation' %>
+<div class="btn-group btn-group-justified" role="group" aria-label="...">
 
 <form class="form" method='get' action = '/admins'>
-  <button name = "manage_admins" type="submit" id="manage_admin_button">Manage Admins</button><br/>
+  <div class="btn-group" role="group">
+    <button class="btn btn-default" name = "manage_admins" type="submit" id="manage_admin_button">Manage Admins</button>
+  </div>
+</form>
+
+  <form class="form" method='get' action = '/instructors'>
+    <div class="btn-group" role="group">
+    <button class="btn btn-default" name = "manage_instructors" type="submit" id="manage_instructor_button">Manage Instructors</button>
+      </div>
+  </form>
+
+
+  <form class="form" method='get' action = '/students'>
+    <div class="btn-group" role="group">
+    <button class="btn btn-default" name = "manage_students" type="submit" id="manage_student_button">Manage Students</button>
+  </div>
+  </form>
+
+  <form class="form" method='get' action = '/courses'>
+  <div class="btn-group" role="group">
+    <button class="btn btn-default" name = "manage_courses" type="submit" id="manage_course_button">Manage Courses</button>
+  </div>
+
 </form>
 
 
 
-<form class="form" method='get' action = '/courses'>
-  <button name = "manage_courses" type="submit" id="manage_course_button">Manage Courses</button><br/>
-</form>
-
-
-
-<form class="form" method='get' action = '/instructors'>
-  <button name = "manage_instructors" type="submit" id="manage_instructor_button">Manage Instructors</button><br/>
-</form>
-
-
-
-<form class="form" method='get' action = '/students'>
-  <button name = "manage_students" type="submit" id="manage_student_button">Manage Students</button><br/>
-</form>
-
-
+</div>
 </body>
 </html>
 

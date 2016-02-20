@@ -1,8 +1,12 @@
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Courses</h1>
+<div class="panel panel-default">
 
-<table>
+  <div class="panel-heading">Listing Courses</div>
+
+
+<table class="table">
   <thead>
     <tr>
       <th>Coursenumber</th>
@@ -42,7 +46,6 @@
     <% end %>
   </tbody>
 </table>
+</div>
 
-<br>
-
-<%= link_to 'New Course', new_course_path %>
+<a class="btn btn-lg btn-lg btn-block" href="<%= new_course_path %>" >New Course</a>

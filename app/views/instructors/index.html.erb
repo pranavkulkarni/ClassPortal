@@ -1,8 +1,11 @@
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
 
-<h1>Listing Instructors</h1>
+  <div class="panel-heading">Listing Instructors</div>
 
-<table>
+
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -28,8 +31,8 @@
   </tbody>
 </table>
 
-<br>
+</div>
 
 <% if session[:user_type] == 'admin' %>
- <%= link_to 'New Instructor', new_instructor_path %>
+    <a class="btn btn-lg btn-lg btn-block" href="<%= new_instructor_path %>" >New Instructor</a>
 <% end %>

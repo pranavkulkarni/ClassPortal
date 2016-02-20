@@ -1,8 +1,10 @@
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Students</h1>
+<div class="panel panel-default">
 
-<table>
+  <div class="panel-heading">Listing Students</div>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -23,7 +25,5 @@
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Student', new_student_path %>
+</div>
+<a class="btn btn-lg btn-lg btn-block" href="<%= new_student_path %>" >New Student</a>

@@ -1,4 +1,7 @@
-<h1>Editing Admin</h1>
+<%= render 'shared/navigation' %>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Editing Admin</div>
 
 <%= form_for(@admin) do |f| %>
     <% if @admin.errors.any? %>
@@ -13,24 +16,24 @@
         </div>
     <% end %>
 
-    <div class="field">
+    <div class="container">
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :email %><br>
       <%= f.text_field :email%>
     </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :password %><br>
       <%= f.password_field :password %>
     </div>
-    <div class="actions">
+    <div class="container">
       <%= f.submit %>
     </div>
 <% end %>
 
+</div>
 
-
-<%= link_to 'Show', @admin %> |
-<%= link_to 'Back', admins_path %>
+<a class="btn btn-lg btn-lg btn-block" href="<%= @admin %>" >Show</a>
+<a class="btn btn-lg btn-lg btn-block" href="<%= admins_path %>" >Back</a>

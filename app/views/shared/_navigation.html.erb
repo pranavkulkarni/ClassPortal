@@ -1,0 +1,25 @@
+<html>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <h4 class="navbar-text">Hi <%= session[:name] %></h4>
+      <a class="navbar-brand" href="<%= '/' + session[:user_type] + 's/land/home' %>">Home</a>
+      <% if session[:user_type] == 'admin' %>
+          <a class="navbar-brand" href="<%= edit_admin_path(Admin.find(session[:current_user_id]))%>">Edit Profile</a>
+      <% end %>
+      <% if session[:user_type] == 'instructor' %>
+          <a class="navbar-brand" href="<%= edit_admin_path(Instructor.find(session[:current_user_id]))%>">Edit Profile</a>
+      <% end %>
+      <% if session[:user_type] == 'student' %>
+          <a class="navbar-brand" href="<%= edit_admin_path(Student.find(session[:current_user_id]))%>">Edit Profile</a>
+      <% end %>
+      <a class="navbar-brand" href="/logins/logout">Logout</a>
+    </div>
+  </div>
+</nav>
+
+
+
+</body>
+</html>
