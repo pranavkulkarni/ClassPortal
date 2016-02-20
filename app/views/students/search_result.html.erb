@@ -17,8 +17,10 @@
        @ins = Instructor.find_by(name: params[:keyword].to_s)
         puts params[:keyword].to_s
        if @ins == nil
+         puts "ins nill"
          @id = 0
        else
+         puts "ins not nill " + @ins.id.to_s
          @id = @ins.id.to_s
        end
      else
@@ -26,7 +28,7 @@
      end
 
   %>
-  <% cl = Course.all.select { |searchrow| searchrow.send(params[:criteria].to_sym) == @id.to_s} %>
+  <% cl = Course.all.select { |searchrow| searchrow.send(params[:criteria].to_s).to_s == @id.to_s} %>
   <% if cl.size !=0 %>
      <% cl.each do |searchrow| %>
       <% if searchrow != nil %>
