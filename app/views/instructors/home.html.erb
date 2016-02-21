@@ -7,7 +7,7 @@
 <div class="panel panel-default">
 
   <div class="panel-heading">Showing Course Details</div>
-
+  <form class="form-control" action='dispatcher' method='post'>
   <table class="table">
     <thead>
     <tr>
@@ -17,9 +17,8 @@
       <th colspan="5"></th>
     </tr>
     </thead>
-
     <tbody>
-    <form class="form-control" action='dispatcher' method='post'>
+
     <% Course.all.select { |x| x.instructor_id == session[:current_user_id]}.each do |c| %>
         <tr>
           <td><%= radio_button_tag 'radio_checked', c.id -%></td>
@@ -28,16 +27,14 @@
         <input id="tokenInsId" name="tokenInsId" type="hidden" value=<%= c.instructor_id %> />
         <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%= c.id %> />
     <% end %>
-    <tr>
-      <td><button class="btn btn-default btn-primary btn-block" name = "manage_student" type="submit" id="manage_student-button">Manage Students</button></td>
-      <td><button class="btn btn-default btn-primary btn-block" name = "manage_course_material" type="submit" id="manage_course_material-button">Manage Course Material</button></td>
-      <td><button class="btn btn-default btn-primary btn-block" name = "add_enrollment" type="submit" id="add_enrollment-button">Add Enrollments</button></td>
-      <td><button class="btn btn-default btn-primary btn-block" name = "send_and_view_messages" type="submit" id="send_and_view_messages-button">Send And View Messages</button></td>
-    </tr>
-    </form>
+
     </tbody>
   </table>
-
+  <button class="btn btn-default btn-primary btn-block" name = "manage_student" type="submit" id="manage_student-button">Manage Students</button>
+  <button class="btn btn-default btn-primary btn-block" name = "manage_course_material" type="submit" id="manage_course_material-button">Manage Course Material</button>
+  <button class="btn btn-default btn-primary btn-block" name = "add_enrollment" type="submit" id="add_enrollment-button">Add Enrollments</button>
+  <button class="btn btn-default btn-primary btn-block" name = "send_and_view_messages" type="submit" id="send_and_view_messages-button">Send And View Messages</button>
+  </form>
 
 </div>
 

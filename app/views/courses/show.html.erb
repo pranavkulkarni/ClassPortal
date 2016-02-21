@@ -59,5 +59,7 @@
 
 </div>
 
+<% if session[:user_type] != 'student' %>
 <a class="btn btn-default btn-primary btn-block" href="<%= edit_course_path(@course) %>" >Edit</a>
+<% end %>
 
