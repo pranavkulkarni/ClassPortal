@@ -1,9 +1,10 @@
 <html>
 <body>
+<%= render 'shared/navigation' %>
+<br/>
+<br/>
+<div class="alert alert-success" role="alert"><%= flash[:notice] if flash[:notice]%></div>
 
-<br/>
-<br/>
-<%= flash[:notice] if flash[:notice]%>
 
 <div>
 

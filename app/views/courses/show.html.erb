@@ -1,38 +1,63 @@
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Coursenumber:</strong>
-  <%= @course.courseNumber %>
-</p>
+<div class="panel panel-default">
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+  <div class="panel-heading">Showing Course Details</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <ol class="list-group">
+          <li class="list-group-item">
+            <p>
+              <strong>Coursenumber:</strong>
+              <%= @course.courseNumber %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Title:</strong>
+              <%= @course.title %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Description:</strong>
+              <%= @course.description %>
+            </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Instructor:</strong>
+              <%= Instructor.find(@course.instructor_id).name %>
+            </p>
 
-<p>
-  <strong>Instructor:</strong>
-  <%= Instructor.find(@course.instructor_id).name %>
-</p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Startdate:</strong>
+              <%= @course.startDate %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Enddate:</strong>
+              <%= @course.endDate %>
+            </p>
+          </li>
+          <li class="list-group-item">
+            <p>
+              <strong>Status:</strong>
+              <%= @course.status %>
+            </p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
 
-<p>
-  <strong>Startdate:</strong>
-  <%= @course.startDate %>
-</p>
+</div>
 
-<p>
-  <strong>Enddate:</strong>
-  <%= @course.endDate %>
-</p>
+<a class="btn btn-lg btn-lg btn-block" href="<%= edit_course_path(@course) %>" >Edit</a>
 
-<p>
-  <strong>Status:</strong>
-  <%= @course.status %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %>

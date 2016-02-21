@@ -1,5 +1,7 @@
-<h1>Editing Instructor</h1>
+<%= render 'shared/navigation' %>
+<div class="panel panel-default">
 
+  <div class="panel-heading">Editing Instructor</div>
 <%= form_for(@instructor) do |f| %>
     <% if @instructor.errors.any? %>
         <div id="error_explanation">
@@ -16,15 +18,15 @@
     <%= flash[:notice] if flash[:notice]%>
     <br> </br>
 
-    <div class="field">
+    <div class="container">
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :email %><br>
       <%= f.text_field :email , :readonly => true %>
     </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :password %><br>
       <%= f.password_field :password %>
     </div>
@@ -32,10 +34,9 @@
       <%= f.label :new_password %><br>
       <%= f.password_field :new_password, :placeholder => 'Enter if you wish to change' %>
     </div>
-    <div class="actions">
+    <div class="container">
       <%= f.submit %>
     </div>
 <% end %>
-
-
-<%= link_to 'Show', @instructor %>
+</div>
+<a class="btn btn-lg btn-lg btn-block" href="<%= @instructor %>" >Show</a>

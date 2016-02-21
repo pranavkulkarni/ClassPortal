@@ -1,24 +1,36 @@
 <html>
 
 <body>
-    <h1>Welcome to Class Portal</h1>
-<form class="form" method='post' action = '/logins/validate'>
-  <div class="form-group">
-  <input required type="email" name = "email" placeholder="Email"><br/> <br/>
-  <input required type="password" name = "password" placeholder="Password"><br/> <br/>
-  <select required name= "userType">
-    <option value = "">Select User Type</option>
-    <option value = "student">Student</option>
-    <option value = "instructor">Instructor</option>
-    <option value = "admin">Admin</option>
-  </select><br/> <br/>
-    <%= flash[:notice] if flash[:notice]%>
-  <button name = "validate" type="submit" id="login-button">Login</button><br/>
-  </div>
-</form>
-<br/>
 
-<%= link_to 'SignUp', '/logins/signup'%>
+
+<nav class="navbar navbar-default" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <h4 class="navbar-text">Class Portal</h4>
+    </div>
+  </div>
+</nav>
+
+<div class="wrapper">
+  <form class="form-signin" method='post' action = '/logins/validate'>
+    <h2 class="form-signin-heading">Please login</h2>
+    <input required type="email" class="form-control" name="email" placeholder="Email Address" autofocus="" />
+    <input required type="password" class="form-control" name="password" placeholder="Password"/>
+    <select class="form-control" required name= "userType">
+      <option value = "">Select User Type</option>
+      <option value = "student">Student</option>
+      <option value = "instructor">Instructor</option>
+      <option value = "admin">Admin</option>
+    </select>
+    <label class="checkbox">
+      <input type="checkbox" value="remember-me" id="rememberMe" name="rememberMe"> Remember me
+    </label>
+    <button class="btn btn-lg btn-primary btn-block" name = "validate" type="submit" id="login-button">Login</button>
+    <%= flash[:notice] if flash[:notice]%>
+    <a class="btn btn-lg btn-primary btn-block" href="/logins/signup" >Sign Up</a>
+  </form>
+
+</div>
 
 </body>
 

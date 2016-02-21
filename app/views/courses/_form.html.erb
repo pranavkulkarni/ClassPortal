@@ -11,36 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="container">
     <%= f.label :courseNumber %><br>
     <%= f.text_field :courseNumber %>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
   </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :instructor_id %><br>
       <%= f.select :instructor_id, options_for_select(Instructor.all.map{|s|[s.name, s.id]}),
                    {:prompt =>"Select Instructor"}, :required => true%>
     </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :startDate %><br>
     <%= f.date_select :startDate %>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :endDate %><br>
     <%= f.date_select :endDate %>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :status %><br>
     <%= f.select :status, options_for_select(["Active", "Inactive"]), {:prompt =>"Select Status"} %>
   </div>
-  <div class="actions">
+    <br/>
+  <div class="container">
     <%= f.submit %>
   </div>
 <% end %>
