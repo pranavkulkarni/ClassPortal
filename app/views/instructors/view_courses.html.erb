@@ -1,32 +1,44 @@
 <html>
-<h1><%= Instructor.find(params[:id]).name.to_s + "'s " %> Courses</h1>
-  <table>
-    <thead>
-    <tr><th>Past Courses</th></tr>
-    </thead>
-    <tbody>
-    <% Course.all.select{|c| c.status == 'Inactive' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
-    <tr>
-      <td>
-        <%= cr.title %>
-      </td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
+<%= render 'shared/navigation' %>
 
-  <table>
-    <thead>
-    <tr><th>Present Courses</th></tr>
-    </thead>
-    <tbody>
-    <% Course.all.select{|c| c.status == 'Active' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
-        <tr>
-          <td>
-            <%= cr.title %>
-          </td>
-        </tr>
-    <% end %>
-    </tbody>
-  </table>
+<div class="panel panel-default">
+
+  <div class="panel-heading"><%= Instructor.find(params[:id]).name.to_s + "'s " %> Courses</div>
+
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Past Courses</div>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-6">
+          <ol class="list-group">
+            <li class="list-group-item">
+              <% Course.all.select{|c| c.status == 'Inactive' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
+              <p><strong> <%= cr.title %></strong>
+              <% end %>
+
+            </li>
+          </ol>
+        </div>
+      </div>
+  </div>
+      <div class="panel-heading">Present Courses</div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-6">
+            <ol class="list-group">
+              <li class="list-group-item">
+                <% Course.all.select{|c| c.status == 'Active' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
+                    <p><strong> <%= cr.title %></strong>
+                <% end %>
+
+              </li>
+            </ol>
+          </div>
+        </div>
+
+    </div>
+  </div>
+    </div>
+  </div>
 </html>

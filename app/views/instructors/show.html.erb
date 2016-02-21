@@ -1,14 +1,26 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @instructor.name %>
-</p>
+<div class="panel panel-default">
 
-<p>
-  <strong>Email:</strong>
-  <%= @instructor.email %>
-</p>
+  <div class="panel-heading">Showing Instructor Details</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <ol class="list-group">
+          <li class="list-group-item">
+            <p><strong>Name:</strong>
+              <%= @instructor.name %></p>
+          </li>
+          <li class="list-group-item">
+            <p><strong>Email:</strong>
+              <%= @instructor.email %></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-default btn-primary btn-block" href="<%= edit_student_path(@instructor) %>" >Edit</a>
 
-<%= link_to 'Edit', edit_instructor_path(@instructor) %>
+

@@ -1,5 +1,7 @@
 <%= render 'shared/navigation' %>
-<h1>New Student</h1>
+<div class="panel panel-default">
+
+  <div class="panel-heading">New Student</div>
 
 <%= form_for(@student) do |f| %>
     <% if @student.errors.any? %>
@@ -14,20 +16,20 @@
         </div>
     <% end %>
 
-    <div class="field">
+    <div class="container">
       <%= f.label :name %><br>
       <%= f.text_field :name %>
     </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :email %><br>
       <%= f.text_field :email%>
     </div>
-    <div class="field">
+    <div class="container">
       <%= f.label :password %><br>
       <%= f.text_field :password %>
     </div>
-    <div class="actions">
+    <div class="container">
       <%= f.submit %>
     </div>
 <% end %>
-
+</div>

@@ -1,38 +1,31 @@
 <html>
 <body>
 <%= render 'shared/navigation' %>
-<div class="btn-group btn-group-justified" role="group" aria-label="...">
+<table class="table">
+  <tr>
+    <td>
+      <form class="form" method='get' action = '/admins'>
+          <button class ="btn btn-default btn-primary btn-block" name = "manage_admins" type="submit" id="manage_admin_button">Manage Admins</button>
+      </form>
+    </td>
+    <td>
+      <form class="form" method='get' action = '/instructors'>
+          <button class="btn btn-default btn-primary btn-block" name = "manage_instructors" type="submit" id="manage_instructor_button">Manage Instructors</button>
+      </form>
+    </td>
+    <td>
+      <form class="form" method='get' action = '/students'>
+          <button class="btn btn-default btn-primary btn-block" name = "manage_students" type="submit" id="manage_student_button">Manage Students</button>
+      </form>
+    </td>
+    <td>
+      <form class="form" method='get' action = '/courses'>
+          <button class="btn btn-default btn-primary btn-block" name = "manage_courses" type="submit" id="manage_course_button">Manage Courses</button>
+      </form>
 
-
-
-
-<form class="form" method='get' action = '/admins'>
-	<div class="btn-group" role="group">
-  <button class="btn btn-default" name = "manage_admins" type="submit" id="manage_admin_button">Manage Admins</button>
-	</div>
-</form>
-
-<form class="form" method='get' action = '/instructors'>
-	<div class="btn-group" role="group">
-  <button class="btn btn-default" name = "manage_instructors" type="submit" id="manage_instructor_button">Manage Instructors</button>
-	</div>
-  </form>
-<form class="form" method='get' action = '/students'>
-	<div class="btn-group" role="group">
-  <button class="btn btn-default" name = "manage_students" type="submit" id="manage_student_button">Manage Students</button>
-	</div>
-  </form>
-
-<form class="form" method='get' action = '/courses'>
-	<div class="btn-group" role="group">
-  <button class="btn btn-default" name = "manage_courses" type="submit" id="manage_course_button">Manage Courses</button>
-	</div>
-</form>
-
-</div>
-
-
-
+    </td>
+  </tr>
+</table>
 </body>
 </html>
 

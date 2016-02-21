@@ -2,8 +2,10 @@
 
 <body>
 
+<div class="panel panel-default">
 
-<h1>Sign Up</h1>
+  <div class="panel-heading">Sign Up</div>
+
 
 <form class="form" method='post' action = '/logins/signupValidate'>
   <input required type="text" name = "name" placeholder="Name"><br/> <br/>
@@ -13,7 +15,7 @@
   <button name = "validate" type="submit" id="signup-button">Sign up</button><br/>
   <%= flash[:notice] if flash[:notice]%>
 </form>
-
+</div>
 </body>
 
 </html>

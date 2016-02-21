@@ -1,8 +1,11 @@
-<p id="notice"><%= notice %></p>
+<%= render 'shared/navigation' %>
 
-<h1>Manage Enrolled Students</h1>
+<p id="notice"><%= notice %></p>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Add grade for student</div>
 <form action='add_grade_admin' method='post'>
-  <table>
+  <table class="table">
     <thead>
     <tr>
 
@@ -26,16 +29,12 @@
             <option value = "D">D</option>
           </select></td>
         </tr>
-    <tr><td>  <button name = "add_grade" type="submit" id="add_grade-button">Add Grade</button> </td></tr>
+    <tr>
     </tbody>
 
     <input id="stud_id" name="stud_id" type="hidden" value=<%= params[:id].to_s %> />
-
-
   </table>
+
+  <button class="btn btn-default btn-primary btn-block" name = "add_grade" type="submit" id="add_grade-button">Add Grade</button>
 </form>
-
-
-<br/>
-
-<br/>
+</div>
