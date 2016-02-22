@@ -13,7 +13,7 @@
     <tr>
       <th>Course</th>
       <th></th>
-      <th></th>
+      <th>Status</th>
       <th colspan="5"></th>
     </tr>
     </thead>
@@ -23,6 +23,7 @@
         <tr>
           <td><%= radio_button_tag 'radio_checked', c.id -%></td>
           <td><%= c.courseNumber.to_s + ' - ' + c.title.to_s%></td>
+          <td><%=  c.status.to_s%></td>
         </tr>
         <input id="tokenInsId" name="tokenInsId" type="hidden" value=<%= c.instructor_id %> />
         <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%= c.id %> />
@@ -34,6 +35,7 @@
   <button class="btn btn-default btn-primary btn-block" name = "manage_course_material" type="submit" id="manage_course_material-button">Manage Course Material</button>
   <button class="btn btn-default btn-primary btn-block" name = "add_enrollment" type="submit" id="add_enrollment-button">Add Enrollments</button>
   <button class="btn btn-default btn-primary btn-block" name = "send_and_view_messages" type="submit" id="send_and_view_messages-button">Send And View Messages</button>
+    <button class="btn btn-default btn-primary btn-block" name = "make_inactive" type="submit" id="make_inactive-button">Request to make it Inactive</button>
   </form>
 
 </div>

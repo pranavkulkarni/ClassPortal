@@ -49,7 +49,11 @@
           <li class="list-group-item">
             <p>
               <strong>Status:</strong>
-              <%= @course.status %>
+              <% if session[:user_type] == 'student' and @course.status.to_s == 'Req Inactive' %>
+                  <%= "Active" %>
+              <%else%>
+                <%= @course.status %>
+              <%end%>
             </p>
           </li>
         </ol>

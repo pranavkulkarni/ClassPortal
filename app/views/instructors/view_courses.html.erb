@@ -28,7 +28,8 @@
           <div class="col-xs-6">
             <ol class="list-group">
               <li class="list-group-item">
-                <% Course.all.select{|c| c.status == 'Active' and c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
+                <% Course.all.select{|c| (c.status == 'Active' or c.status == 'Req Inactive') and
+                    c.instructor_id.to_s == params[:id].to_s}.each do |cr| %>
                     <p><strong> <%= cr.title %></strong>
                 <% end %>
 

@@ -160,8 +160,21 @@ class InstructorsController < ApplicationController
       end
     end
 
-
-
+    def make_inactive(course_id)
+      if course_id == nil
+        flash[:notice] = 'Please select a course!'
+        redirect_to '/instructors/land/home'
+      elsif Course.find(course_id).status == 'Inactive'
+        flash[:notice] = 'Course is inactive!'
+        redirect_to '/instructors/land/home'
+      elsif
+        cr = Course.find(course_id)
+        cr.status = "Req Inactive"
+        cr.save
+        flash[:notice] = 'Request to make the course inactive is made successfully!'
+        redirect_to '/instructors/land/home'
+      end
+    end
 
     def dispatcher
       if params.has_key?(:manage_student)
@@ -172,7 +185,10 @@ class InstructorsController < ApplicationController
         manage_course_mat params[:radio_checked], params[:tokenInsId]
       elsif params.has_key?(:send_and_view_messages)
         send_view_messages params[:radio_checked]
+      elsif params.has_key?(:make_inactive)
+        make_inactive params[:radio_checked]
       end
+    end
 
     end
 
@@ -219,4 +235,3 @@ class InstructorsController < ApplicationController
         remove_stu params[:tokenCourseId], params[:student_ids]
       end
     end
-end
