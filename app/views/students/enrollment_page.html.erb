@@ -5,10 +5,12 @@
 <%= flash[:notice] if flash[:notice]%>
 
 <div>
+  <div class="panel panel-default">
 
-  <h1>Courses for enrollment</h1>
+    <div class="panel-heading">Courses for Enrollment</div>
+
   <form action='enroll_course' method='post'>
-    <table>
+    <table class="table">
       <thead>
       <tr>
         <th>Select</th>
@@ -32,12 +34,12 @@
       </tbody>
     </table>
 
-    <button class="btn btn-default btn-primary btn-block" name = "enroll_course" type="submit" id="enroll_course-button">Enroll</button>
+    <button class="btn btn-default btn-primary btn-lg" name = "enroll_course" type="submit" id="enroll_course-button">Enroll</button>
 
   </form>
 
 </div>
-
+</div>
 </body>
 </html>
 

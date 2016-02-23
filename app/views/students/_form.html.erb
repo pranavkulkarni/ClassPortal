@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="container">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :email %><br>
     <%= f.text_field :email, :readonly => true%>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :password %><br>
     <%= f.text_field :password %>
   </div>
-  <div class="actions">
+  <div class="container">
     <%= f.submit %>
   </div>
 <% end %>

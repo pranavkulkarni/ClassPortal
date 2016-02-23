@@ -1,16 +1,14 @@
 <html>
 <body>
 <%= render 'shared/navigation' %>
-
-<br/>
-<br/>
 <%= flash[:notice] if flash[:notice]%>
-
 <div>
+  <div class="panel panel-default">
 
-  <h1>Your Messages:</h1>
+    <div class="panel-heading">Your Messages:</div>
+
   <form action='new_message' method='post'>
-    <table>
+    <table class="table">
       <thead>
       <tr>
         <th>Timestamp</th>
@@ -31,12 +29,12 @@
       </tbody>
     </table>
     <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:cId]%> />
-    <button name = "new_message" type="submit" id="new_message-button">Create a new message</button>
+    <button class="btn btn-default btn-primary btn-lg" name = "new_message" type="submit" id="new_message-button">Create a new message</button>
 
   </form>
 
 </div>
-
+</div>
 </body>
 </html>
 

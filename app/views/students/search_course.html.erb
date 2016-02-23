@@ -5,14 +5,16 @@
 <%= flash[:notice] if flash[:notice]%>
 
 <div>
+  <div class="panel panel-default">
 
-  <h1>Search by keyword:</h1>
+    <div class="panel-heading">Search by keyword:</div>
+
   <form action='search_result' method='post'>
-    <table>
+    <table class="table">
       <tbody>
       <tr>
         <td></td>
-        <td><select required name= "criteria">
+        <td><select class="form-control" required name= "criteria">
           <option value = "">Select Criteria</option>
           <option value = "courseNumber">Course Number</option>
           <option value = "title">Course Title</option>
@@ -23,13 +25,13 @@
         <td> <div class="field">
           <input required type="text" name = "keyword" placeholder="Enter Keyword">
         </div> </td>
-        <td><button name = "search_criteria" type="submit" id="search_criteria-button">Search</button></td>
+        <td><button class="btn btn-default btn-primary btn-lg" name = "search_criteria" type="submit" id="search_criteria-button">Search</button></td>
       </tr>
       </tbody>
       </table>
   </form>
 
 </div>
-
+</div>
 </body>
 </html>

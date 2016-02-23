@@ -1,8 +1,11 @@
+<%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
+<div class="panel panel-default">
 
-<h1>Listing Messages</h1>
+  <div class="panel-heading">Listing Messages</div>
 
-<table>
+
+<table class="table">
   <thead>
     <tr>
       <th>Message</th>
@@ -23,5 +26,5 @@
 </table>
 
 <br>
-
-<%= link_to 'New Message', new_message_path %>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= edit_message_path %>" >New Message</a>
+</div>

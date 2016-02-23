@@ -1,9 +1,11 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Pending Enrollments</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">Pending Enrollments</div>
+
 <form action='enroll_student' method='post'>
-<table>
+<table class="table">
   <thead>
   <tr>
     <th>Select All</th>
@@ -31,7 +33,7 @@
 
 </table>
   <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:id]%> />
-<button class="btn btn-default btn-primary btn-block" name = "enroll" type="submit" id="enroll-button">Enroll Students</button>
+<button class="btn btn-default btn-primary btn-lg" name = "enroll" type="submit" id="enroll-button">Enroll Students</button>
 </form>
 
 
@@ -39,4 +41,4 @@
 
 <br/>
 
-
+</div>

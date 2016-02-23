@@ -1,7 +1,10 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Grades</h1>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Listing Grade</div>
+
 
 <table>
   <thead>
@@ -25,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Grade', new_grade_path %>
+<a class="btn btn-default btn-primary btn-lg" href="<%= new_grade_path %>" >New Grade</a>
+</div>

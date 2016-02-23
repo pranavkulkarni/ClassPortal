@@ -1,9 +1,12 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Manage Enrolled Students</h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Manage Enrolled Students</div>
+
 <form action='manage_student_dispatcher' method='post'>
-  <table>
+  <table class="table">
     <thead>
     <tr>
       <th>Select All</th>
@@ -33,14 +36,14 @@
 <table>
   <tbody>
   <tr>
-    <td><select name= "grade">
+    <td><select class="form-control" name= "grade">
       <option value = "">Select Grade</option>
       <option value = "A">A</option>
       <option value = "B">B</option>
       <option value = "C">C</option>
       <option value = "D">D</option>
     </select></td>
-    <td><button name = "add_grade" type="submit" id="add_grade-button">Add Grade</button></td>
+    <td><button class="btn-sm" s name = "add_grade" type="submit" id="add_grade-button">Add Grade</button></td>
   </tr>
 
   <br/>
@@ -59,3 +62,4 @@
 <br>
 
 <br/>
+</div>

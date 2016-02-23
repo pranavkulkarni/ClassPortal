@@ -1,6 +1,10 @@
 <%= render 'shared/navigation' %>
-<h1>Editing Enrollment</h1>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Editing Enrollments</div>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @enrollment %>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= @enrollment %>" >Show</a>
+
+</div>

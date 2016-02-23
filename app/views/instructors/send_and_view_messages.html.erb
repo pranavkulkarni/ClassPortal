@@ -7,10 +7,10 @@
 
 
 <div>
-
-  <h1>Your Messages:</h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">Your Messages:</div>
   <form action='new_message' method='post'>
-    <table>
+    <table class="table">
       <thead>
       <tr>
         <th>Timestamp</th>
@@ -25,7 +25,7 @@
             <td><%= m.created_at %></td>
             <td><%= Student.find(m.student_id).name %></td>
             <td><%= m.message %></td>
-            <td><%= link_to 'Reply', "/instructors/land/send_view_messages/new_message/"+ m.course_id.to_s + "/" + m.student_id.to_s%></td>
+            <td><a class="btn btn-default btn-primary btn-block" href="<%= "/instructors/land/send_view_messages/new_message/"+ m.course_id.to_s + "/" + m.student_id.to_s %>" >Reply</a></td>
           </tr>
       <% end %>
 
@@ -36,7 +36,7 @@
   </form>
 
 </div>
-
+</div>
 </body>
 </html>
 

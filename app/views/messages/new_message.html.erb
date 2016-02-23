@@ -1,6 +1,9 @@
 <html>
 <body>
-New message
+<%= render 'shared/navigation' %>
+<div class="panel panel-default">
+
+  <div class="panel-heading">New Message</div>
 <br/>
 <% if session[:user_type] == 'student' %>
 <form action='create' method='post'>
@@ -10,7 +13,7 @@ New message
   <div class="field">
     <input required type="text" name = "message" placeholder="Enter message">
     <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:tokenCourseId]%> />
-    <button name = "submit_message" type="submit" id="submit_message-button">Submit message</button>
+    <button class="btn btn-default btn-primary btn-lg" name = "submit_message" type="submit" id="submit_message-button">Submit message</button>
   </div>
 </form>
 <% end %>
@@ -21,11 +24,11 @@ New message
     <input required type="text" name = "message" placeholder="Enter message">
     <input id="tokenCourseId" name="tokenCourseId" type="hidden" value=<%=params[:tokenCourseId]%> />
     <input id="tokenStudId" name="tokenStudId" type="hidden" value=<%=params[:tokenStudId]%> />
-    <button name = "submit_message" type="submit" id="submit_message-button">Submit message</button>
+    <button class="btn btn-default btn-primary btn-lg" name = "submit_message" type="submit" id="submit_message-button">Submit message</button>
   </div>
 </form>
 <%end%>
 
-
+</div>
 </body>
 </html>

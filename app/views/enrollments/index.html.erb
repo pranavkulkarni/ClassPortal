@@ -1,9 +1,11 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Enrollments</h1>
+<div class="panel panel-default">
 
-<table>
+  <div class="panel-heading">Listing Enrollments</div>
+
+<table class="table">
   <thead>
     <tr>
       <th>Status</th>
@@ -24,5 +26,5 @@
 </table>
 
 <br>
-
-<%= link_to 'New Enrollment', new_enrollment_path %>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= new_enrollment_path %>" >New Enrollment</a>
+</div>

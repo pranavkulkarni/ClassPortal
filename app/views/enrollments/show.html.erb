@@ -1,9 +1,20 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @enrollment.status %>
-</p>
+<div class="panel panel-default">
 
-<%= link_to 'Edit', edit_enrollment_path(@enrollment) %>
+  <div class="panel-heading">Showing Enrollment Details</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <ol class="list-group">
+          <li class="list-group-item">
+            <p><strong>Status:</strong>
+              <%= @enrollment.status %></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-default btn-primary btn-lg" href="<%= edit_enrollment_path(@enrollment) %>" >Edit</a>

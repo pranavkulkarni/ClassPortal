@@ -1,6 +1,10 @@
 <%= render 'shared/navigation' %>
-<h1>Editing Grade</h1>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Editing Grade</div>
+
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @grade %>
+<a class="btn btn-default btn-primary btn-lg" href="<%= @grade %>" >Show</a>
+</div>

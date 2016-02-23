@@ -1,5 +1,9 @@
 <%= render 'shared/navigation' %>
-<h1>New Course Material</h1>
-<%= render 'form' %>
+<div class="panel panel-default">
 
-<%= link_to 'Back', '/instructors/land/manage_course_material/' + params[:tokenCourseId].to_s + '/'+params[:tokenInsId].to_s %>
+  <div class="panel-heading">New Course Material</div>
+
+<%= render 'form' %>
+<br/>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= '/instructors/land/manage_course_material/' + params[:tokenCourseId].to_s + '/'+params[:tokenInsId].to_s %>" >Back</a>
+</div>

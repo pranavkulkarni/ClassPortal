@@ -1,5 +1,9 @@
-<h1>Editing Message</h1>
+<%= render 'shared/navigation' %>
+<div class="panel panel-default">
+
+  <div class="panel-heading">Editing Message</div>
 
 <%= render 'form' %>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= @message %>" >Show</a>
 
-<%= link_to 'Show', @message %>
+  </div>

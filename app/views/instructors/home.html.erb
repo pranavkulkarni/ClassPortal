@@ -5,10 +5,11 @@
 <%= flash[:notice] if flash[:notice]%>
 
 <div class="panel panel-default">
-
   <div class="panel-heading">Showing Course Details</div>
+
   <form class="form-control" action='dispatcher' method='post'>
-  <table class="table">
+
+    <table class="table">
     <thead>
     <tr>
       <th>Course</th>
@@ -31,11 +32,41 @@
 
     </tbody>
   </table>
-  <button class="btn btn-default btn-primary btn-block" name = "manage_student" type="submit" id="manage_student-button">Manage Students</button>
-  <button class="btn btn-default btn-primary btn-block" name = "manage_course_material" type="submit" id="manage_course_material-button">Manage Course Material</button>
-  <button class="btn btn-default btn-primary btn-block" name = "add_enrollment" type="submit" id="add_enrollment-button">Add Enrollments</button>
-  <button class="btn btn-default btn-primary btn-block" name = "send_and_view_messages" type="submit" id="send_and_view_messages-button">Send And View Messages</button>
-    <button class="btn btn-default btn-primary btn-block" name = "make_inactive" type="submit" id="make_inactive-button">Request to make it Inactive</button>
+
+    <table class="table">
+      <tr>
+        <td>
+
+          <button class="btn btn-default btn-primary btn-block" name = "manage_student" type="submit" id="manage_student-button">Manage Students</button>
+
+        </td>
+        <td>
+
+          <button class="btn btn-default btn-primary btn-block" name = "manage_course_material" type="submit" id="manage_course_material-button">Manage Course Material</button>
+
+        </td>
+        <td>
+
+          <button class="btn btn-default btn-primary btn-block" name = "add_enrollment" type="submit" id="add_enrollment-button">Add Enrollments</button>
+
+        </td>
+        <td>
+
+          <button class="btn btn-default btn-primary btn-block" name = "send_and_view_messages" type="submit" id="send_and_view_messages-button">Send And View Messages</button>
+
+
+        </td>
+        <td>
+          <button class="btn btn-default btn-primary btn-block" name = "make_inactive" type="submit" id="make_inactive-button">Request to make it Inactive</button>
+        </td>
+      </tr>
+    </table>
+
+
+
+
+
+
   </form>
 
 </div>

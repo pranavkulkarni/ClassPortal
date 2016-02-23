@@ -8,10 +8,11 @@
 <%= flash[:notice] if flash[:notice]%>
 
 <div>
+  <div class="panel panel-default">
 
-  <h1>Your Courses:</h1>
+    <div class="panel-heading">Your Courses</div>
   <form action='dispatcher' method='post'>
-    <table>
+    <table class="table">
       <thead>
       <tr>
         <th>Course</th>
@@ -43,13 +44,21 @@
 
       </tbody>
     </table>
-    <button name = "enroll_student" type="submit" id="enroll_student-button">Enroll Into A Course</button>
-    <button name = "search" type="submit" id="search-button">Search Courses</button>
 
+    <table>
+      <tr>
+        <td>
+    <button class="btn btn-default btn-primary btn-block" name = "enroll_student" type="submit" id="enroll_student-button">Enroll Into A Course</button>
+        </td>
+        <td>
+    <button class="btn btn-default btn-primary btn-block" name = "search" type="submit" id="search-button">Search Courses</button>
+        </td>
+      </tr>
+</table>
   </form>
 
 </div>
-
+</div>
 </body>
 </html>
 

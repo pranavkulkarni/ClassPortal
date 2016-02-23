@@ -1,8 +1,10 @@
 <%= render 'shared/navigation' %>
-<h1>Editing Course Material</h1>
-<%= render 'form' %>
+<div class="panel panel-default">
+  <div class="panel-heading">Editing Course Material</div>
 
-<%= link_to 'Show', @course_material %> |
-<%= link_to 'Back', '/instructors/land/manage_course_material/' +
-    @course_material.course_id.to_s +
-    '/'+ @course_material.instructor_id.to_s %>
+<%= render 'form' %>
+<br/>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= @course_material %>" >Show</a>
+  <a class="btn btn-default btn-primary btn-lg" href="<%= "/instructors/land/manage_course_material/" + @course_material.course_id.to_s + "/" + @course_material.instructor_id.to_s %>" >Back</a>
+
+</div>

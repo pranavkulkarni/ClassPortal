@@ -11,17 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="container">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <div class="field">
+  <div class="container">
     <%= f.label :message %><br>
     <%= f.text_field :message %>
   </div>
     <input id="course_id" name="course_id" type="hidden" value=<%= params[:tokenCourseId].to_s %> />
     <input id="instructor_id" name="instructor_id" type="hidden" value=<%= params[:tokenInsId].to_s %> />
-  <div class="actions">
+  <div class="container">
     <%= f.submit %>
   </div>
 <% end %>

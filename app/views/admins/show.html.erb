@@ -1,14 +1,25 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @admin.name %>
-</p>
+<div class="panel panel-default">
 
-<p>
-  <strong>Email:</strong>
-  <%= @admin.email %>
-</p>
-
-<a class="btn btn-default btn-primary btn-block" href="<%= edit_admin_path(@admin) %>" >Edit</a>
+  <div class="panel-heading">Showing Admin Details</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <ol class="list-group">
+          <li class="list-group-item">
+            <p><strong>Name:</strong>
+              <%= @admin.name %></p>
+          </li>
+          <li class="list-group-item">
+            <p><strong>Email:</strong>
+              <%= @admin
+                  .email %></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+<a class="btn btn-default btn-primary btn-lg" href="<%= edit_admin_path(@admin) %>" >Edit</a>

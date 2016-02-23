@@ -1,15 +1,27 @@
 <%= render 'shared/navigation' %>
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course_material.title %>
-</p>
+<div class="panel panel-default">
 
-<p>
-  <strong>Message:</strong>
-  <%= @course_material.message %>
-</p>
+  <div class="panel-heading">Showing Course Material Details</div>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-6">
+        <ol class="list-group">
+          <li class="list-group-item">
+            <p><strong>Title:</strong>
+              <%= @course_material.title %></p>
+          </li>
+          <li class="list-group-item">
+            <p><strong>Message:</strong>
+              <%= @course_material.message %></p>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a class="btn btn-default btn-primary btn-lg" href="<%= '/instructors/land/manage_course_material/' + @course_material.course_id.to_s + '/'+ @course_material.instructor_id.to_s %>" >Back</a>
 
 
-<%= link_to 'Back', '/instructors/land/manage_course_material/' + @course_material.course_id.to_s + '/'+ @course_material.instructor_id.to_s %>
