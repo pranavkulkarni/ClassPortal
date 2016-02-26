@@ -35,6 +35,8 @@
             <td><%= link_to 'Drop Course', 'drop_course/' + c.course_id.to_s, data: {confirm: 'Are you sure to drop the course?'} %></td>
             <% if c.status == 'ENROLLED' %>
                 <td><%= link_to 'View Course Material', "/instructors/land/manage_course_material/"+ c.course_id.to_s + "/" + session[:current_user_id].to_s%></td>
+            <%else%>
+                <td></td>
             <%end%>
             <td><%= link_to 'Send and View Messages', 'send_and_view_messages/' + c.course_id.to_s %></td>
 

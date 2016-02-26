@@ -1,3 +1,4 @@
+
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
 
@@ -6,7 +7,7 @@ class CoursesController < ApplicationController
   def index
     @instructors = Instructor.all
     @courses = Course.all
-    puts "GET CALLED............."
+
   end
 
   # GET /courses/1
@@ -21,6 +22,7 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    puts "Edit called......."
   end
 
   # POST /courses
@@ -42,6 +44,26 @@ class CoursesController < ApplicationController
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
   def update
+    puts "Update called in courses......" + course_params.to_s
+    puts params[:id].to_s
+    if course_params[:status] == "Active"
+      @c = Course.find(params[:id])
+      @c.status='Active'
+      @c.save
+      puts "Sending email......"
+      @notifiers = EmailNotification.where(course_id: params[:id])
+      if @notifiers != nil
+
+        @notifiers.all.each do |n|
+          @em = Student.find(n.student_id).email.to_s
+          puts "Sending email to ...." + @em
+          if @em != nil
+            Pony.mail(:to => @em, :from => 'localhost@gmail.com', :subject => 'Wolfweb portal: Course active', :body => 'Hello there. The course ' + course_params[:title].to_s + ' has become active.')
+          end
+        end
+      end
+      EmailNotification.destroy_all(course_id: params[:id])
+    end
     respond_to do |format|
       if @course.update(course_params)
         format.html { redirect_to @course, notice: 'Course was successfully updated.' }
@@ -52,6 +74,8 @@ class CoursesController < ApplicationController
       end
     end
   end
+
+
 
   # DELETE /courses/1
   # DELETE /courses/1.json

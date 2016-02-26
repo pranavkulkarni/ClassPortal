@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :email_notifications
   resources :messages
   resources :course_materials
   resources :grades
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   get 'instructors/land/add_enrollment/:id' => 'instructors#add_enrollment'
   get '/instructors/land/send_view_messages/:cId' => 'instructors#send_and_view_messages'
   post 'instructors/land/add_enrollment/enroll_student'  => 'instructors#enroll_student'
-  post 'instructors/land/manage_student/manage_student_dispatcher'  => 'instructors#manage_student_dispatcher'
+  post 'instructors/land/manage_student/manage_stud_dispatcher'  => 'instructors#manage_stud_dispatcher'
   post 'course_materials/new' => 'course_materials/new'
   post 'course_materials/:id' => 'course_materials#destroy'
   get 'admins/land/destroy/:id'   => 'admins#destroy'
@@ -40,6 +41,7 @@ Rails.application.routes.draw do
   post 'students/land/dispatcher' => 'students#dispatcher'
   get '/students/land/enrollment_page' => 'students#enrollment_page'
   post 'students/land/enroll_course' => 'students#enroll_course'
+  post 'students/land/register_for_email' => 'students#register_for_email'
   get 'students/land/search_course' => 'students#search_course'
   post 'students/land/search_result' => 'students#search_result'
   get 'students/land/send_and_view_messages/:cId' => 'students#send_and_view_messages'

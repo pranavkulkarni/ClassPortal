@@ -4,7 +4,7 @@ one:
   courseNumber: MyString
   title: MyString
   description: MyString
-  instructor: MyString
+  instructor_id: MyString
   startDate: 2016-01-31
   endDate: 2016-01-31
   status: MyString
@@ -13,7 +13,7 @@ two:
   courseNumber: MyString
   title: MyString
   description: MyString
-  instructor: MyString
+  instructor_id: MyString
   startDate: 2016-01-31
   endDate: 2016-01-31
   status: MyString

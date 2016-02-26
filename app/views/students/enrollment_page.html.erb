@@ -40,6 +40,45 @@
 
 </div>
 </div>
+
+
+
+<div>
+  <div class="panel panel-default">
+
+    <div class="panel-heading">Inactive Courses</div>
+
+    <form action='register_for_email' method='post'>
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Select</th>
+          <th>Course</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% Course.all.each do |course| %>
+            <% if course.status == 'Inactive' %>
+
+
+                <tr>
+                  <% @courseDetails = course.courseNumber + ' ' + course.title %>
+                  <td><%= check_box_tag 'courses_to_be_notified[]', course.id %></td>
+                  <td><%= @courseDetails %></td>
+                </tr>
+            <% end %>
+        <% end %>
+
+        </tbody>
+      </table>
+
+      <button class="btn btn-default btn-primary btn-lg" name = "notify_course" type="submit" id="notify_course-button">Notify me when this course becomes active</button>
+
+    </form>
+
+  </div>
+</div>
+
 </body>
 </html>
-

@@ -26,7 +26,7 @@
         <td><%= link_to 'Edit', edit_instructor_path(instructor) %></td>
         <% end %>
         <td><%= link_to 'View Courses', '/instructors/land/view_courses/'+ instructor.id.to_s %></td>
-        <td><%= link_to 'Destroy', '/instructors/land/destroy/'+ instructor.id.to_s %></td>
+        <td><%= link_to 'Destroy', '/instructors/land/destroy/'+ instructor.id.to_s, data: { confirm: 'Are you sure to delete?' } %></td>
       </tr>
     <% end %>
   </tbody>

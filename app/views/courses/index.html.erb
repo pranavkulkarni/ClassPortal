@@ -33,14 +33,14 @@
         <td><%= course.status %></td>
             <% if (session[:user_type] == 'admin') %>
        <!-- <td><%= link_to 'Show', course %></td> -->
-                <% if (course.status != 'Inactive') %>
+
                     <td><%= link_to 'Edit', edit_course_path(course) %></td>
                     <td><%= link_to 'Manage Material', 'instructors/land/manage_course_material/'+
                         course.id.to_s + '/' +course.instructor_id.to_s %></td>
-                <% else %>
+
                     <td></td>
                     <td></td>
-                <%end%>
+
                 <td><%= link_to 'Destroy', '/courses/land/destroy/'+ course.id.to_s%></td>
             <% end  %>
             <td> <% if (session[:user_type] == 'instructor') %>

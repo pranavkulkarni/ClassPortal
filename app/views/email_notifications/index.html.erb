@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Email Notifications</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @email_notifications.each do |email_notification| %>
+      <tr>
+        <td><%= link_to 'Show', email_notification %></td>
+        <td><%= link_to 'Edit', edit_email_notification_path(email_notification) %></td>
+        <td><%= link_to 'Destroy', email_notification, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Email notification', new_email_notification_path %>

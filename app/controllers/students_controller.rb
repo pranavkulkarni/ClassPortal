@@ -91,6 +91,18 @@ class StudentsController < ApplicationController
   end
 
 
+  def register_for_email
+    @courseListToNotify = params[:courses_to_be_notified]
+    puts "$$$$$$$$$$$" + params.to_s
+    @courseListToNotify.each do |courId|
+      @e = EmailNotification.create(student_id: session[:current_user_id].to_s, course_id:courId)
+    end
+    flash[:notice] = 'Registered for notification when a course becomes active!'
+    redirect_to '/students/land/enrollment_page'
+  end
+
+
+
   def drop_course
     e = Enrollment.find_by(student_id: session[:current_user_id], course_id: params[:cId])
     e.status = 'DROPPED'

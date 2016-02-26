@@ -190,7 +190,6 @@ class InstructorsController < ApplicationController
       end
     end
 
-    end
 
     def add__stu_grade(courseId,grade,student_list)
       if student_list == nil
@@ -226,8 +225,7 @@ class InstructorsController < ApplicationController
       end
     end
 
-
-    def manage_student_dispatcher
+    def manage_stud_dispatcher
       puts params
       if params.has_key?(:add_grade)
         add__stu_grade params[:tokenCourseId], params[:grade], params[:student_ids]
@@ -235,3 +233,5 @@ class InstructorsController < ApplicationController
         remove_stu params[:tokenCourseId], params[:student_ids]
       end
     end
+
+  end
